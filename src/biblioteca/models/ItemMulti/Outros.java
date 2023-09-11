@@ -1,0 +1,58 @@
+package biblioteca.models.ItemMulti;
+
+public class Outros extends Item{
+	private String Tipo, Formato, Localização, Estado; //atributos específicos, seguidos de construtores e getters/setters
+	private int NumTot, NumDisp;
+	public Outros() {
+		super();
+		Tipo = Formato = Localização = Estado = "Empty";
+		NumTot = NumDisp = 0;
+	}
+	public Outros(String titulo, String autorartista, String editoragravadora, String genero, String sinopse,
+			String imgpath, int anopub, String tipo, String formato, String localização, String estado, int numTot, int numDisp) {
+		super(titulo, autorartista, editoragravadora, genero, sinopse, imgpath, estado, anopub);
+		Tipo = tipo;
+		Formato = formato;
+		Localização = localização;
+		Estado = estado;
+		NumTot = numTot;
+		NumDisp = numDisp;
+	}
+	public String getTipo() {
+		return Tipo;
+	}
+	public void setTipo(String tipo) {
+		Tipo = tipo;
+	}
+	public String getFormato() {
+		return Formato;
+	}
+	public void setFormato(String formato) {
+		Formato = formato;
+	}
+	public String getLocalização() {
+		return Localização;
+	}
+	public void setLocalização(String localização) {
+		Localização = localização;
+	}
+	public String getEstado() {
+		return Estado;
+	}
+	public void setEstado(String estado) {
+		Estado = estado;
+	}
+	public int getNumTot() {
+		return NumTot;
+	}
+	public void setNumTot(int numTot) {
+		NumTot = numTot;
+	}
+	public int getNumDisp() {
+		return NumDisp;
+	}
+	public void setNumDisp(int numDisp) {
+		NumDisp = numDisp;
+	}
+	
+}
