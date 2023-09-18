@@ -125,7 +125,8 @@ public class BibliotecaMain {
                 case 6:
                     realizarRenovacao(scanner);
                     break;
-                case 7: 
+                case 7:
+                	fazerReservaPadrão(scanner, itens, itensTotal, membros, Reservas);
                     break;
                 case 8:
                     devolverItem(scanner, Empréstimos, itens);
@@ -384,6 +385,29 @@ public class BibliotecaMain {
     		}
     	}
     	return true; //reserva feita
+    }
+    
+    private static void fazerReservaPadrão(Scanner scanner, List<Item> itens, Map<String, Item> itensTotal, List<MembroM> membros, List<Reserva> reservas) {
+        // Lógica para realizar uma reserva
+        System.out.println("Operação de Reserva de Itens");
+        System.out.println();
+    	System.out.println("Quem está requerindo o Item? (Digite o Nome)"); //descobrir membro
+    	System.out.println();
+    	String Nome = scanner.nextLine();
+    	scanner.nextLine();
+    	MembroM Mtest = buscaM(membros, Nome); //buscar membro
+    	if(Mtest == null) { //membro não existe
+    		return;
+    	}
+        System.out.println("Qual Item deseja realizar a Reserva? (Digite o Título)"); //descobrir Item
+        System.out.println();
+    	String Titulo = scanner.nextLine();
+    	scanner.nextLine();
+    	Item Itest = buscaItem(itens, Titulo); //buscar Item
+    	boolean check = checkReserva(Titulo, Mtest, Itest, itensTotal, reservas); //verificar se está reservado
+    	if(check == false) { //já está reservado 
+    		return;
+    	}
     }
 
     // Métodos para realizar empréstimo
