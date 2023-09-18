@@ -1,5 +1,9 @@
 package biblioteca.models.ItemMulti;
 
+import java.util.List;
+
+import biblioteca.models.Comentario;
+
 public class Outros extends Item{
 	private String Tipo, Formato, Localização, Estado; //atributos específicos, seguidos de construtores e getters/setters
 	private int NumTot, NumDisp;
@@ -9,8 +13,8 @@ public class Outros extends Item{
 		NumTot = NumDisp = 0;
 	}
 	public Outros(String titulo, String autorartista, String editoragravadora, String genero, String sinopse,
-			String imgpath, int anopub, String tipo, String formato, String localização, String estado, int numTot, int numDisp) {
-		super(titulo, autorartista, editoragravadora, genero, sinopse, imgpath, estado, anopub);
+			String imgpath, int anopub, List<Comentario> comentarios, String tipo, String formato, String localização, String estado, int numTot, int numDisp) {
+		super(titulo, autorartista, editoragravadora, genero, sinopse, imgpath, anopub, estado, comentarios);
 		Tipo = tipo;
 		Formato = formato;
 		Localização = localização;

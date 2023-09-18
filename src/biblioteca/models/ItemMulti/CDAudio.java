@@ -1,5 +1,9 @@
 package biblioteca.models.ItemMulti;
 
+import java.util.List;
+
+import biblioteca.models.Comentario;
+
 public class CDAudio extends Item {
 	private String Lista, Duracao, Estado; //atributos específicos, seguidos de construtores e getters/setters
 	private int NumTot, NumDisp;
@@ -9,8 +13,8 @@ public class CDAudio extends Item {
 		NumTot = NumDisp = 0;
 	}
 	public CDAudio(String titulo, String autorartista, String editoragravadora, String genero, String sinopse,
-			String imgpath, int anopub, String lista, String duracao, String estado, int numTot, int numDisp) {
-		super(titulo, autorartista, editoragravadora, genero, sinopse, imgpath, estado, anopub);
+			String imgpath, int anopub, List<Comentario> comentarios, String lista, String duracao, String estado, int numTot, int numDisp) {
+		super(titulo, autorartista, editoragravadora, genero, sinopse, imgpath, anopub, estado, comentarios);
 		Lista = lista;
 		Duracao = duracao;
 		Estado = estado;

@@ -1,5 +1,9 @@
 package biblioteca.models.ItemMulti;
 
+import java.util.List;
+
+import biblioteca.models.Comentario;
+
 public class LivroEletrônico extends Item {
 	private String Formato, FormatoArq, URL, Requisitos; //atributos específicos, seguidos de construtores e getters/setters
 	private int NumLic, Data;
@@ -9,8 +13,8 @@ public class LivroEletrônico extends Item {
 		NumLic = Data = 0;
 	}
 	public LivroEletrônico(String titulo, String autorartista, String editoragravadora, String genero, String sinopse,
-			String imgpath, int anopub, String formato, String formatoArq, String uRL, String requisitos, int numLic, int data) {
-		super(titulo, autorartista, editoragravadora, genero, sinopse, imgpath, requisitos, anopub);
+			String imgpath, int anopub, List<Comentario> comentarios, String formato, String formatoArq, String uRL, String requisitos, int numLic, int data) {
+		super(titulo, autorartista, editoragravadora, genero, sinopse, imgpath, anopub, requisitos, comentarios);
 		Formato = formato;
 		FormatoArq = formatoArq;
 		URL = uRL;

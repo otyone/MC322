@@ -1,9 +1,10 @@
 package biblioteca.views;
 
 import java.util.List;
+import java.util.Iterator;
 
 import biblioteca.controllers.BibliotecaController;
-import biblioteca.models.ItemMultimidia;
+import biblioteca.models.ItemMulti.*;
 
 public class BibliotecaViewImpl implements BibliotecaView {
     private BibliotecaController bibliotecaController;
@@ -11,10 +12,29 @@ public class BibliotecaViewImpl implements BibliotecaView {
     public BibliotecaViewImpl(BibliotecaController controller) {
         bibliotecaController = controller;
     }
+    
 
-    @Override
-    public void mostrarItensDisponiveis(List<ItemMultimidia> itens) {
+    public BibliotecaController getBibliotecaController() {
+		return bibliotecaController;
+	}
+
+	public void setBibliotecaController(BibliotecaController bibliotecaController) {
+		this.bibliotecaController = bibliotecaController;
+	}
+
+	@Override
+    public void mostrarItensDisponiveis(List<Item> itens) {
         // Implementação da exibição de itens disponíveis
+		if(itens == null) {
+			System.out.println("Não há itens disponíveis");
+			return;
+		}
+    	Iterator<Item> it = itens.iterator();
+    	while(it.hasNext()) {
+    		Item test = it.next();
+    		System.out.println("Título:" + test.getTitulo());
+    	}
+    	return;
     }
 
     @Override

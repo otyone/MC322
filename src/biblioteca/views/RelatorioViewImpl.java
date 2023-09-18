@@ -8,5 +8,13 @@ public class RelatorioViewImpl implements RelatorioView{
 	public RelatorioViewImpl(RelatorioController relatorioController) {
 		this.relatorioController = relatorioController;
 	}
+
+	public RelatorioController getRelatorioController() {
+		return relatorioController;
+	}
+
+	public void setRelatorioController(RelatorioController relatorioController) {
+		this.relatorioController = relatorioController;
+	}
 	
 }

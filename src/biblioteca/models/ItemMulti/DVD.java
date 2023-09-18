@@ -1,5 +1,9 @@
 package biblioteca.models.ItemMulti;
 
+import java.util.List;
+
+import biblioteca.models.Comentario;
+
 public class DVD extends Item {
 	private String Elenco, Duracao, LegendaAudio, Estado; //atributos específicos, seguidos de construtores e getters/setters
 	private int NumTot, NumDisp;
@@ -9,8 +13,8 @@ public class DVD extends Item {
 		NumTot = NumDisp = 0;
 	}
 	public DVD(String titulo, String autorartista, String editoragravadora, String genero, String sinopse,
-			String imgpath, int anopub, String elenco, String duracao, String legendaAudio, String estado, int numTot, int numDisp) {
-		super(titulo, autorartista, editoragravadora, genero, sinopse, imgpath, estado, anopub);
+			String imgpath, int anopub, List<Comentario> comentarios, String elenco, String duracao, String legendaAudio, String estado, int numTot, int numDisp) {
+		super(titulo, autorartista, editoragravadora, genero, sinopse, imgpath, anopub, estado, comentarios);
 		Elenco = elenco;
 		Duracao = duracao;
 		LegendaAudio = legendaAudio;

@@ -1,5 +1,9 @@
 package biblioteca.models.ItemMulti;
 
+import java.util.List;
+
+import biblioteca.models.Comentario;
+
 public class LivroFisico extends Item {
 	private String Localização, Estado; //atributos específicos, seguidos de construtores e getters/setters
 	private int ISBN, Edição, NumTot, NumEd;
@@ -9,8 +13,8 @@ public class LivroFisico extends Item {
 		ISBN = Edição = NumTot = NumEd = 0;
 	}
 	public LivroFisico(String titulo, String autorartista, String editoragravadora, String genero, String sinopse,
-			String imgpath, int anopub, String localização, String estado, int iSBN, int edição, int numTot, int numEd) {
-		super(titulo, autorartista, editoragravadora, genero, sinopse, imgpath, estado, anopub);
+			String imgpath, int anopub, List<Comentario> comentarios, String localização, String estado, int iSBN, int edição, int numTot, int numEd) {
+		super(titulo, autorartista, editoragravadora, genero, sinopse, imgpath, anopub, estado, comentarios);
 		Localização = localização;
 		Estado = estado;
 		ISBN = iSBN;

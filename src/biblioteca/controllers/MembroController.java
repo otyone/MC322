@@ -2,10 +2,9 @@ package biblioteca.controllers;
 
 import java.util.List;
 
-import biblioteca.models.Membro;
-import biblioteca.views.MembroView;
+import biblioteca.models.Membros.MembroM;
 
 public interface MembroController {
-    List<Membro> listarMembros();
-    Membro buscarMembroPorIdentificacao(String identificacao);
+    List<MembroM> listarMembros();
+    MembroM buscarMembroPorIdentificacao(String identificacao);
 }
