@@ -12,9 +12,9 @@ public class Outros extends Item{
 		Tipo = Formato = Localização = Estado = "Empty";
 		NumTot = NumDisp = 0;
 	}
-	public Outros(String titulo, String autorartista, String editoragravadora, String genero, String sinopse,
+	public Outros(String titulo, String autorartista, String detalhes, String editoragravadora, String genero, String sinopse,
 			String imgpath, int anopub, List<Comentario> comentarios, String tipo, String formato, String localização, String estado, int numTot, int numDisp) {
-		super(titulo, autorartista, editoragravadora, genero, sinopse, imgpath, anopub, estado, comentarios);
+		super(titulo, autorartista, detalhes, editoragravadora, genero, sinopse, imgpath, anopub, comentarios);
 		Tipo = tipo;
 		Formato = formato;
 		Localização = localização;

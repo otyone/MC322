@@ -6,6 +6,8 @@ import biblioteca.views.*;
 import biblioteca.models.Membros.*;
 import biblioteca.models.Pedidos.*;
 import biblioteca.models.ItemMulti.*;
+import Generics.*;
+import biblioteca.models.SistemaBiblioteca.*;
 
 import java.util.List;
 import java.util.LinkedList;
@@ -45,6 +47,24 @@ public class BibliotecaMain {
         List<Reserva> Reservas = new LinkedList<>(); //lista de reservas de itens
         Empréstimos = null; Reservas = null; //inicializando com null (garantir bom funcionamento)
         
+        ///////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
+        
+        DVD dvd = new DVD();  Outros outro = new Outros(); ReservaSala Sala1 = new ReservaSala(2509, 11, 14); ReservaSala.SalaIndividual SalaI = Sala1.new SalaIndividual(10,true); //instanciando objetos para testar as classes genéricas
+        
+        ItemBiblioteca<DVD> itemB = new ItemBibliotecaImpl<DVD>(); ItemBiblioteca<Outros> itemB2 = new ItemBibliotecaImpl<Outros>(); //instanciando dois tipos de ItemBiblioteca
+        itemB.ReservarItem(dvd); itemB.DevolverItem(dvd); itemB2.EmprestarItem(outro); itemB2.DevolverItem(outro); //testando métodos
+        
+        ListaReserva<ReservaSala.SalaIndividual> ListaR = new ListaReservaImpl<ReservaSala.SalaIndividual>(); ListaReserva<ItemMultimidia> ListaR2 = new ListaReservaImpl<ItemMultimidia>(); //instanciando dois tipos de Lista Reserva
+        ListaR.Reservar(SalaI); ListaR.Reservar(SalaI); ListaR.mostrarReservas(); ListaR.Remover(SalaI); ListaR.mostrarReservas(); //testando métodos
+        ListaR2.Reservar(dvd); ListaR2.Reservar(outro); ListaR2.mostrarReservas(); ListaR2.Remover(dvd); ListaR2.mostrarReservas(); //testando métodos comprovando diferentes tipos de itens
+        
+        ListaEmpréstimos<DVD> ListaE = new ListaEmpréstimosImpl<DVD>(); ListaEmpréstimos<ItemMultimidia> ListaE2 = new ListaEmpréstimosImpl<ItemMultimidia>(); //instanciando dois tipos de Lista Emrpéstimos
+        ListaE.Emprestar(dvd); ListaE.Emprestar(dvd); ListaE.mostrarEmpréstimos(); ListaE.Remover(dvd); ListaE.mostrarEmpréstimos(); //testando métodos
+        ListaE2.Emprestar(outro); ListaE2.Emprestar(dvd); ListaE2.mostrarEmpréstimos(); ListaE2.Remover(outro); ListaE2.mostrarEmpréstimos(); //testando métodos comprovando diferentes tipos de itens
+        
+        ///////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
+
+        
         while (true) {
             System.out.println("---- Menu Biblioteca ----");
             System.out.println();
@@ -83,6 +103,7 @@ public class BibliotecaMain {
                     return;
                 default:
                     System.out.println("Opção inválida. Por favor, escolha novamente.");
+                    System.out.println();
             }
         }
     }
@@ -111,7 +132,7 @@ public class BibliotecaMain {
                     bibliotecaView.mostrarItensDisponiveis(itens);
                     break;
                 case 2:
-                    adicionarItem(scanner, itensTotal, itens);
+                    adicionarItem(scanner, itensTotal, itens, membros);
                     break;
                 case 3:
                     editarItem(scanner);
@@ -165,7 +186,7 @@ public class BibliotecaMain {
                     adicionarMembro(scanner, membros);
                     break;
                 case 3:
-                    editarMembro(scanner);
+                    editarMembro(scanner, membros);
                     break;
                 case 4:
                     removerMembro(scanner, membros);
@@ -458,11 +479,447 @@ public class BibliotecaMain {
     }
 
     // Métodos para adicionar, editar e remover itens e membros
-    private static void adicionarItem(Scanner scanner, Map<String, Item> itensTotal, List<Item> itens) {
+    private static void adicionarItem(Scanner scanner, Map<String, Item> itensTotal, List<Item> itens, List<MembroM> membros) {
         // Lógica para adicionar um novo item
-        System.out.println("Operação de Adição de Item");
-        System.out.println();
-        
+    	while(true) {
+    		String Titulo, AutorArtista, Detalhes, EditoraGravadora, Genero, Sinopse, imgPath;
+    		int AnoPub;
+ 	        System.out.println("Operação de Adição de Item");
+	        System.out.println();
+	        System.out.println("1. CD de Áudio");
+	        System.out.println("2. DVD");
+	        System.out.println("3. Livro Eletrônico");
+	        System.out.println("4. Livro Físico");
+	        System.out.println("5. Outros");
+	        System.out.println("6. Retorna");
+	        System.out.println();
+	        int decisao = scanner.nextInt(); 
+	        scanner.nextLine();
+	        switch(decisao) {
+	        case 1:
+	        	System.out.println("Por favor, digite:");
+	        	System.out.println();
+	        	System.out.println("Título:");
+	        	Titulo = scanner.nextLine();
+	        	scanner.nextLine();        	
+	        	System.out.println("Autor ou Artista responsável:"); //preenchendo variáveis da classe
+	        	AutorArtista = scanner.nextLine();
+	        	scanner.nextLine();
+	        	System.out.println("Detalhes:");
+	        	Detalhes = scanner.nextLine();
+	        	scanner.nextLine();
+	        	System.out.println("Editora ou Gravadora:");
+	        	EditoraGravadora = scanner.nextLine();
+	        	scanner.nextLine();
+	        	System.out.println("Genêro:");
+	        	Genero = scanner.nextLine();
+	        	scanner.nextLine();
+	        	System.out.println("Sinopse:"); 
+	        	Sinopse = scanner.nextLine();
+	        	scanner.nextLine();
+	        	System.out.println("Ano de publicação:");
+	        	AnoPub = scanner.nextInt();
+	        	scanner.nextLine();
+	        	System.out.println("URL de Imagem para Capa:");
+	        	imgPath = scanner.nextLine();
+	        	scanner.nextLine();
+	        	System.out.println("Lista de músicas:");
+	        	String Lista = scanner.nextLine();
+	        	scanner.nextLine();
+	        	System.out.println("Duração:");
+	        	String Duracao = scanner.nextLine();
+	        	scanner.nextLine();
+	        	System.out.println("Estado do item:"); 
+	        	String Estado = scanner.nextLine();
+	        	scanner.nextLine();
+	        	System.out.println("Número total do item:");
+	        	int NumTot = scanner.nextInt();
+	        	scanner.nextLine();
+	        	System.out.println("Número disponível do item:");
+	        	int NumDisp = scanner.nextInt();
+	        	scanner.nextLine();
+	        	System.out.println("Deseja adicionar algum comentário sobre o item?");
+	        	scanner.nextLine();
+	        	System.out.println("1. Sim");
+	            System.out.println("2. Não");
+	            System.out.println();
+	            decisao = scanner.nextInt(); 
+	            scanner.nextLine();
+	            switch(decisao) {
+	            case 1:
+	            	while(true) {
+	            		System.out.println("Qual membro está escrevendo o comentário? (Digite o Nome)");
+	                	scanner.nextLine();
+	                	String Nome = scanner.nextLine();
+	                	scanner.nextLine();
+	                	boolean test = buscarMembro(membros, Nome);
+	                	if(test == true) {
+	                		System.out.println("Qual o comentário?");
+	                    	scanner.nextLine();
+	                    	String Texto = scanner.nextLine();
+	                    	scanner.nextLine();
+	                    	Comentario newComentario = new Comentario(Nome, Titulo, Texto);
+	                    	CDAudio newCD = new CDAudio(Titulo, AutorArtista, Detalhes, EditoraGravadora, Genero, Sinopse, imgPath, AnoPub, null, Lista, Duracao, Estado, NumTot, NumDisp);
+	                    	newCD.adicionar(newComentario);
+	                    	itens.add(newCD);
+	                    	itensTotal.put(Titulo, newCD);
+	                    	break;
+	                	}else {
+	                		System.out.println("Membro não existe!");
+	                		scanner.nextLine();
+	                		break;
+	                	}
+	            	}
+	            case 2:
+	            	CDAudio newCD = new CDAudio(Titulo, AutorArtista, Detalhes, EditoraGravadora, Genero, Sinopse, imgPath, AnoPub, null, Lista, Duracao, Estado, NumTot, NumDisp);
+	            	itens.add(newCD);
+	            	itensTotal.put(Titulo, newCD);
+	            	break;
+	            }
+	        	break;
+	        case 2:
+	        	System.out.println("Por favor, digite:");
+	        	System.out.println();
+	        	System.out.println("Título:");
+	        	Titulo = scanner.nextLine();
+	        	scanner.nextLine();
+	        	System.out.println("Autor ou Artista responsável:"); //preenchendo variáveis da classe
+	        	AutorArtista = scanner.nextLine();
+	        	scanner.nextLine();
+	        	System.out.println("Detalhes:");
+	        	Detalhes = scanner.nextLine();
+	        	scanner.nextLine();
+	        	System.out.println("Editora ou Gravadora:");
+	        	EditoraGravadora = scanner.nextLine();
+	        	scanner.nextLine();
+	        	System.out.println("Genêro:");
+	        	Genero = scanner.nextLine();
+	        	scanner.nextLine();
+	        	System.out.println("Sinopse:"); 
+	        	Sinopse = scanner.nextLine();
+	        	scanner.nextLine();
+	        	System.out.println("Ano de publicação:");
+	        	AnoPub = scanner.nextInt();
+	        	scanner.nextLine();
+	        	System.out.println("URL de Imagem para Capa:");
+	        	imgPath = scanner.nextLine();
+	        	scanner.nextLine();
+	        	System.out.println("Elenco:");
+	        	String Elenco = scanner.nextLine();
+	        	scanner.nextLine();
+	        	System.out.println("Duração:");
+	        	String Duracao2 = scanner.nextLine();
+	        	scanner.nextLine();
+	        	System.out.println("Linguagem Legenda e Áudio:");
+	        	String LegendaAudio = scanner.nextLine();
+	        	scanner.nextLine();
+	        	System.out.println("Estado do item:"); 
+	        	String Estado2 = scanner.nextLine();
+	        	scanner.nextLine();
+	        	System.out.println("Número total do item:");
+	        	int NumTot2 = scanner.nextInt();
+	        	scanner.nextLine();
+	        	System.out.println("Número disponível do item:");
+	        	int NumDisp2 = scanner.nextInt();
+	        	scanner.nextLine();
+	        	System.out.println("Deseja adicionar algum comentário sobre o item?");
+	        	scanner.nextLine();
+	        	System.out.println("1. Sim");
+	            System.out.println("2. Não");
+	            System.out.println();
+	            decisao = scanner.nextInt(); 
+	            scanner.nextLine();
+	            switch(decisao) {
+	            case 1:
+	            	while(true) {
+	            		System.out.println("Qual membro está escrevendo o comentário? (Digite o Nome)");
+	                	scanner.nextLine();
+	                	String Nome = scanner.nextLine();
+	                	scanner.nextLine();
+	                	boolean test = buscarMembro(membros, Nome);
+	                	if(test == true) {
+	                		System.out.println("Qual o comentário?");
+	                    	scanner.nextLine();
+	                    	String Texto = scanner.nextLine();
+	                    	scanner.nextLine();
+	                    	Comentario newComentario = new Comentario(Nome, Titulo, Texto);
+	                    	DVD newDVD = new DVD(Titulo, AutorArtista, Detalhes, EditoraGravadora, Genero, Sinopse, imgPath, AnoPub, null, Elenco, Duracao2, LegendaAudio, Estado2, NumTot2, NumDisp2);
+	                    	newDVD.adicionar(newComentario);
+	                    	itens.add(newDVD);
+	                    	itensTotal.put(Titulo, newDVD);
+	                    	break;
+	                	}else {
+	                		System.out.println("Membro não existe!");
+	                		scanner.nextLine();
+	                		break;
+	                	}
+	            	}
+	            case 2:
+	            	DVD newDVD = new DVD(Titulo, AutorArtista, Detalhes, EditoraGravadora, Genero, Sinopse, imgPath, AnoPub, null, Elenco, Duracao2, LegendaAudio, Estado2, NumTot2, NumDisp2);
+                	itens.add(newDVD);
+                	itensTotal.put(Titulo, newDVD);
+	            	break;
+	            }
+	        	break;
+	        case 3:
+	        	System.out.println("Por favor, digite:");
+	        	System.out.println();
+	        	System.out.println("Título:");
+	        	Titulo = scanner.nextLine();
+	        	scanner.nextLine();
+	        	System.out.println("Autor ou Artista responsável:"); //preenchendo variáveis da classe
+	        	AutorArtista = scanner.nextLine();
+	        	scanner.nextLine();
+	        	System.out.println("Detalhes:");
+	        	Detalhes = scanner.nextLine();
+	        	scanner.nextLine();
+	        	System.out.println("Editora ou Gravadora:");
+	        	EditoraGravadora = scanner.nextLine();
+	        	scanner.nextLine();
+	        	System.out.println("Genêro:");
+	        	Genero = scanner.nextLine();
+	        	scanner.nextLine();
+	        	System.out.println("Sinopse:"); 
+	        	Sinopse = scanner.nextLine();
+	        	scanner.nextLine();
+	        	System.out.println("Ano de publicação:");
+	        	AnoPub = scanner.nextInt();
+	        	scanner.nextLine();
+	        	System.out.println("URL de Imagem para Capa:");
+	        	imgPath = scanner.nextLine();
+	        	scanner.nextLine();
+	        	System.out.println("Formato:");
+	        	String Formato = scanner.nextLine();
+	        	scanner.nextLine();
+	        	System.out.println("Formato do Arquivo:");
+	        	String FormatoArq = scanner.nextLine();
+	        	scanner.nextLine();
+	        	System.out.println("URL:"); 
+	        	String URL = scanner.nextLine();
+	        	scanner.nextLine();
+	        	System.out.println("Requisitos:"); 
+	        	String Requisitos = scanner.nextLine();
+	        	scanner.nextLine();
+	        	System.out.println("Número de licenças:");
+	        	int NumLic = scanner.nextInt();
+	        	scanner.nextLine();
+	        	System.out.println("Data:");
+	        	int Data = scanner.nextInt();
+	        	scanner.nextLine();
+	        	System.out.println("Deseja adicionar algum comentário sobre o item?");
+	        	scanner.nextLine();
+	        	System.out.println("1. Sim");
+	            System.out.println("2. Não");
+	            System.out.println();
+	            decisao = scanner.nextInt(); 
+	            scanner.nextLine();
+	            switch(decisao) {
+	            case 1:
+	            	while(true) {
+	            		System.out.println("Qual membro está escrevendo o comentário? (Digite o Nome)");
+	                	scanner.nextLine();
+	                	String Nome = scanner.nextLine();
+	                	scanner.nextLine();
+	                	boolean test = buscarMembro(membros, Nome);
+	                	if(test == true) {
+	                		System.out.println("Qual o comentário?");
+	                    	scanner.nextLine();
+	                    	String Texto = scanner.nextLine();
+	                    	scanner.nextLine();
+	                    	Comentario newComentario = new Comentario(Nome, Titulo, Texto);
+	                    	LivroEletrônico newLivroE = new LivroEletrônico(Titulo, AutorArtista, Detalhes, EditoraGravadora, Genero, Sinopse, imgPath, AnoPub, null, Formato, FormatoArq, URL, Requisitos, NumLic, Data);
+	                    	newLivroE.adicionar(newComentario);
+	                    	itens.add(newLivroE);
+	                    	itensTotal.put(Titulo, newLivroE);
+	                    	break;
+	                	}else {
+	                		System.out.println("Membro não existe!");
+	                		scanner.nextLine();
+	                		break;
+	                	}
+	            	}
+	            case 2:
+	            	LivroEletrônico newLivroE = new LivroEletrônico(Titulo, AutorArtista, Detalhes, EditoraGravadora, Genero, Sinopse, imgPath, AnoPub, null, Formato, FormatoArq, URL, Requisitos, NumLic, Data);
+                	itens.add(newLivroE);
+                	itensTotal.put(Titulo, newLivroE);
+	            	break;
+	            }
+	        	break;
+	        case 4:
+	        	System.out.println("Por favor, digite:");
+	        	System.out.println();
+	        	System.out.println("Título:");
+	        	Titulo = scanner.nextLine();
+	        	scanner.nextLine();
+	        	System.out.println("Autor ou Artista responsável:"); //preenchendo variáveis da classe
+	        	AutorArtista = scanner.nextLine();
+	        	scanner.nextLine();
+	        	System.out.println("Detalhes:");
+	        	Detalhes = scanner.nextLine();
+	        	scanner.nextLine();
+	        	System.out.println("Editora ou Gravadora:");
+	        	EditoraGravadora = scanner.nextLine();
+	        	scanner.nextLine();
+	        	System.out.println("Genêro:");
+	        	Genero = scanner.nextLine();
+	        	scanner.nextLine();
+	        	System.out.println("Sinopse:"); 
+	        	Sinopse = scanner.nextLine();
+	        	scanner.nextLine();
+	        	System.out.println("Ano de publicação:");
+	        	AnoPub = scanner.nextInt();
+	        	scanner.nextLine();
+	        	System.out.println("URL de Imagem para Capa:");
+	        	imgPath = scanner.nextLine();
+	        	scanner.nextLine();
+	        	System.out.println("Localização:");
+	        	String Localizacao = scanner.nextLine();
+	        	scanner.nextLine();
+	        	System.out.println("Estado do item:"); 
+	        	String Estado3 = scanner.nextLine();
+	        	scanner.nextLine();
+	        	System.out.println("ISBN:");
+	        	int ISBN = scanner.nextInt();
+	        	scanner.nextLine();
+	        	System.out.println("Edição:");
+	        	int Edicao = scanner.nextInt();
+	        	scanner.nextLine();
+	        	System.out.println("Número total do item:");
+	        	int NumTot3 = scanner.nextInt();
+	        	scanner.nextLine();
+	        	System.out.println("Número disponível da edição:");
+	        	int NumED = scanner.nextInt();
+	        	scanner.nextLine();
+	        	System.out.println("Deseja adicionar algum comentário sobre o item?");
+	        	scanner.nextLine();
+	        	System.out.println("1. Sim");
+	            System.out.println("2. Não");
+	            System.out.println();
+	            decisao = scanner.nextInt(); 
+	            scanner.nextLine();
+	            switch(decisao) {
+	            case 1:
+	            	while(true) {
+	            		System.out.println("Qual membro está escrevendo o comentário? (Digite o Nome)");
+	                	scanner.nextLine();
+	                	String Nome = scanner.nextLine();
+	                	scanner.nextLine();
+	                	boolean test = buscarMembro(membros, Nome);
+	                	if(test == true) {
+	                		System.out.println("Qual o comentário?");
+	                    	scanner.nextLine();
+	                    	String Texto = scanner.nextLine();
+	                    	scanner.nextLine();
+	                    	Comentario newComentario = new Comentario(Nome, Titulo, Texto);
+	                    	LivroFisico newLivroF = new LivroFisico(Titulo, AutorArtista, Detalhes, EditoraGravadora, Genero, Sinopse, imgPath, AnoPub, null, Localizacao, Estado3, ISBN, Edicao, NumTot3, NumED);
+	                    	newLivroF.adicionar(newComentario);
+	                    	itens.add(newLivroF);
+	                    	itensTotal.put(Titulo, newLivroF);
+	                    	break;
+	                	}else {
+	                		System.out.println("Membro não existe!");
+	                		scanner.nextLine();
+	                		break;
+	                	}
+	            	}
+	            case 2:
+	            	LivroFisico newLivroF = new LivroFisico(Titulo, AutorArtista, Detalhes, EditoraGravadora, Genero, Sinopse, imgPath, AnoPub, null, Localizacao, Estado3, ISBN, Edicao, NumTot3, NumED);
+                	itens.add(newLivroF);
+                	itensTotal.put(Titulo, newLivroF);
+	            	break;
+	            }
+	        	break;
+	        case 5:
+	        	System.out.println("Por favor, digite:");
+	        	System.out.println();
+	        	System.out.println("Título:");
+	        	Titulo = scanner.nextLine();
+	        	scanner.nextLine();
+	        	System.out.println("Autor ou Artista responsável:"); //preenchendo variáveis da classe
+	        	AutorArtista = scanner.nextLine();
+	        	scanner.nextLine();
+	        	System.out.println("Detalhes:");
+	        	Detalhes = scanner.nextLine();
+	        	scanner.nextLine();
+	        	System.out.println("Editora ou Gravadora:");
+	        	EditoraGravadora = scanner.nextLine();
+	        	scanner.nextLine();
+	        	System.out.println("Genêro:");
+	        	Genero = scanner.nextLine();
+	        	scanner.nextLine();
+	        	System.out.println("Sinopse:"); 
+	        	Sinopse = scanner.nextLine();
+	        	scanner.nextLine();
+	        	System.out.println("Ano de publicação:");
+	        	AnoPub = scanner.nextInt();
+	        	scanner.nextLine();
+	        	System.out.println("URL de Imagem para Capa:");
+	        	imgPath = scanner.nextLine();
+	        	scanner.nextLine();
+	        	System.out.println("Tipo de Item:");
+	        	String Tipo = scanner.nextLine();
+	        	scanner.nextLine();
+	        	System.out.println("Formato:");
+	        	String Formato2 = scanner.nextLine();
+	        	scanner.nextLine();
+	        	System.out.println("Localização:"); 
+	        	String Localizacao2 = scanner.nextLine();
+	        	scanner.nextLine();
+	        	System.out.println("Estado do item:"); 
+	        	String Estado4 = scanner.nextLine();
+	        	scanner.nextLine();
+	        	System.out.println("Número total do item:");
+	        	int NumTot4 = scanner.nextInt();
+	        	scanner.nextLine();
+	        	System.out.println("Número disponível do item:");
+	        	int NumDisp4 = scanner.nextInt();
+	        	scanner.nextLine();
+	        	System.out.println("Deseja adicionar algum comentário sobre o item?");
+	        	scanner.nextLine();
+	        	System.out.println("1. Sim");
+	            System.out.println("2. Não");
+	            System.out.println();
+	            decisao = scanner.nextInt(); 
+	            scanner.nextLine();
+	            switch(decisao) {
+	            case 1:
+	            	while(true) {
+	            		System.out.println("Qual membro está escrevendo o comentário? (Digite o Nome)");
+	                	scanner.nextLine();
+	                	String Nome = scanner.nextLine();
+	                	scanner.nextLine();
+	                	boolean test = buscarMembro(membros, Nome);
+	                	if(test == true) {
+	                		System.out.println("Qual o comentário?");
+	                    	scanner.nextLine();
+	                    	String Texto = scanner.nextLine();
+	                    	scanner.nextLine();
+	                    	Comentario newComentario = new Comentario(Nome, Titulo, Texto);
+	                    	Outros newOutro = new Outros(Titulo, AutorArtista, Detalhes, EditoraGravadora, Genero, Sinopse, imgPath, AnoPub, null, Tipo, Formato2, Localizacao2, Estado4, NumTot4, NumDisp4);
+	                    	newOutro.adicionar(newComentario);
+	                    	itens.add(newOutro);
+	                    	itensTotal.put(Titulo, newOutro);
+	                    	break;
+	                	}else {
+	                		System.out.println("Membro não existe!");
+	                		scanner.nextLine();
+	                		break;
+	                	}
+	            	}
+	            case 2:
+	            	Outros newOutro = new Outros(Titulo, AutorArtista, Detalhes, EditoraGravadora, Genero, Sinopse, imgPath, AnoPub, null, Tipo, Formato2, Localizacao2, Estado4, NumTot4, NumDisp4);
+                	itens.add(newOutro);
+                	itensTotal.put(Titulo, newOutro);
+	            	break;
+	            }
+	        	break;
+	        case 6:
+	        	return;
+	        default:
+	        	System.out.println("Opção inválida. Por favor, escolha novamente.");
+	        	System.out.println();
+	        }
+    	}
     }
 
     private static void editarItem(Scanner scanner) {
@@ -501,12 +958,10 @@ public class BibliotecaMain {
         return;
     }
     
-    private static boolean buscarMembro(Scanner scanner, List<MembroM> membros, String name) {
+    private static boolean buscarMembro(List<MembroM> membros, String name) {
     	if(membros == null) { //se membros é null, não há membros
     		return false;
     	}
-        System.out.println("Qual Membro deseja buscar? (Digite o Nome)");
-        System.out.println();
         String Nome = name;
         Iterator<MembroM> it = membros.iterator();
         while(it.hasNext()) {
@@ -521,6 +976,8 @@ public class BibliotecaMain {
     private static void adicionarMembro(Scanner scanner, List<MembroM> membros) { //método para adicionar Membro
         // Lógica para adicionar um novo membro
     	while(true) {
+    	String Nome, Identificacao;
+    	int Contato, Data;
     	System.out.println("Operação de Adição de Membro"); //descobrir que tipo de membro
     	System.out.println();
         System.out.println("1. Estudante");
@@ -536,28 +993,28 @@ public class BibliotecaMain {
         	System.out.println("Por favor, digite:");
         	System.out.println();
         	System.out.println("Nome:");
-        	String Nome = scanner.nextLine();
+        	Nome = scanner.nextLine();
         	scanner.nextLine();
-        	boolean test = buscarMembro(scanner, membros, Nome); //verificar se membro já existe
-        	if(test == true) {
-        		System.out.println("Membro já existe");
-        		break;
-        	}else {}
         	System.out.println("Identificação:"); //preenchendo variáveis da classe
-        	String Identificacao = scanner.nextLine();
+        	Identificacao = scanner.nextLine();
         	scanner.nextLine();
         	System.out.println("Contato:");
-        	int Contato = scanner.nextInt();
+        	Contato = scanner.nextInt();
         	scanner.nextLine();
         	System.out.println("Data:");
-        	int Data = scanner.nextInt();
+        	Data = scanner.nextInt();
         	scanner.nextLine();
         	System.out.println("Faz Pós-Graduação? (true ou false)");
         	boolean Pós = scanner.nextBoolean();
         	scanner.nextLine();
         	Limite = 3; Prazo = 5; Multa = 3.50;
         	Estudante newMembro = new Estudante(Nome, Identificacao, Contato, Data, Limite, Prazo, Multa, null, Pós); //criando instância
+        	if(membros.contains(newMembro)) {
+        		System.out.println("Membro já existe");
+        		break;
+        	}
         	membros.add(newMembro); //adicionando
+        	((MembroControllerImpl) membroController).setMembros(membros);
         	break;
         case 2:
         	System.out.println("Por favor, digite:");
@@ -565,11 +1022,6 @@ public class BibliotecaMain {
         	System.out.println("Nome:");
         	Nome = scanner.nextLine();
         	scanner.nextLine();
-        	test = buscarMembro(scanner, membros, Nome); //verificar se membro já existe
-        	if(test == true) {
-        		System.out.println("Membro já existe");
-        		break;
-        	}else {}
         	System.out.println("Identificação:"); //preenchendo variáveis da classe
         	Identificacao = scanner.nextLine();
         	scanner.nextLine();
@@ -581,7 +1033,12 @@ public class BibliotecaMain {
         	scanner.nextLine();
         	Limite = 5; Prazo = 10; Multa = 1.50;
         	Funcionário newMembro2 = new Funcionário(Nome, Identificacao, Contato, Data, Limite, Prazo, Multa, null); //criando instância
+        	if(membros.contains(newMembro2)) {
+        		System.out.println("Membro já existe");
+        		break;
+        	}
         	membros.add(newMembro2); //adicionando
+        	((MembroControllerImpl) membroController).setMembros(membros);
         	break;
         case 3:
         	System.out.println("Por favor, digite:");
@@ -589,11 +1046,6 @@ public class BibliotecaMain {
         	System.out.println("Nome:");
         	Nome = scanner.nextLine();
         	scanner.nextLine();
-        	test = buscarMembro(scanner, membros, Nome); //verificar se membro já existe
-        	if(test == true) {
-        		System.out.println("Membro já existe");
-        		break;
-        	}else {}
         	System.out.println("Identificação:"); //preenchendo variáveis da classe
         	Identificacao = scanner.nextLine();
         	scanner.nextLine();
@@ -605,7 +1057,12 @@ public class BibliotecaMain {
         	scanner.nextLine();
         	Limite = 7; Prazo = 10; Multa = 1.50;
         	Professor newMembro3 = new Professor(Nome, Identificacao, Contato, Data, Limite, Prazo, Multa, null); //criando instância
+        	if(membros.contains(newMembro3)) {
+        		System.out.println("Membro já existe");
+        		break;
+        	}
         	membros.add(newMembro3); //adicionando
+        	((MembroControllerImpl) membroController).setMembros(membros);
         	break;
         case 4:
         	return;
@@ -616,9 +1073,82 @@ public class BibliotecaMain {
       }
     }
 
-    private static void editarMembro(Scanner scanner) {
+    private static void editarMembro(Scanner scanner, List<MembroM> membros) {
         // Lógica para editar um membro existente
-        System.out.println("Operação de Edição de Membro");
+    	while(true) {
+    		System.out.println("Operação de Edição de Membro");
+            System.out.println();
+            System.out.println("Qual Membro deseja editar? (Digite o Nome)"); //descobrir Membro
+            System.out.println();
+            String Nome = scanner.nextLine();
+            scanner.nextLine();
+            boolean test = buscarMembro(membros, Nome);
+            if(test == false) {
+            	System.out.println("Membro não existe!");
+            	System.out.println();
+            	return;
+            }else {
+            	int Number;
+            	MembroM memb = buscaM(membros, Nome);
+            	System.out.println("O que deseja editar?"); 
+                System.out.println();
+                System.out.println("1. Nome");
+                System.out.println("2. Identificação");
+                System.out.println("3. Contato");
+                System.out.println("4. Data");
+                System.out.println("5. Retorna");
+                System.out.println();
+                int decisaoMembro = scanner.nextInt();
+                scanner.nextLine();
+                switch(decisaoMembro) {
+                case 1:
+                	System.out.println("Novo nome"); 
+                    System.out.println();
+                    Nome = scanner.nextLine();
+                    scanner.nextLine();
+                    memb.setNome(Nome);
+                    System.out.println("Sucesso!"); 
+                    System.out.println();
+                    ((MembroControllerImpl) membroController).setMembros(membros);
+                    break;
+                case 2:
+                	System.out.println("Nova Identificação"); 
+                    System.out.println();
+                    Nome = scanner.nextLine();
+                    scanner.nextLine();
+                    memb.setIdentificacao(Nome);
+                    System.out.println("Sucesso!"); 
+                    System.out.println();
+                    ((MembroControllerImpl) membroController).setMembros(membros);
+                    break;
+                case 3:
+                	System.out.println("Novo Contato"); 
+                    System.out.println();
+                    Number = scanner.nextInt();
+                    scanner.nextLine();
+                    memb.setContato(Number);
+                    System.out.println("Sucesso!"); 
+                    System.out.println();
+                    ((MembroControllerImpl) membroController).setMembros(membros);
+                    break;
+                case 4:
+                	System.out.println("Nova Data"); 
+                    System.out.println();
+                    Number = scanner.nextInt();
+                    scanner.nextLine();
+                    memb.setData(Number);
+                    System.out.println("Sucesso!"); 
+                    System.out.println();
+                    ((MembroControllerImpl) membroController).setMembros(membros);
+                    break;
+                case 5:
+                	return;
+                default:
+                	System.out.println("Opção inválida. Por favor, escolha novamente.");
+                	System.out.println();
+                }
+            }
+        }
     }
 
     private static void removerMembro(Scanner scanner, List<MembroM> membros) {
@@ -641,6 +1171,8 @@ public class BibliotecaMain {
         		membros.remove(test); //remover membro
         		System.out.println("Membro removido!");
                 System.out.println();
+                ((MembroControllerImpl) membroController).setMembros(membros);
+                return;
         	}
         }
         System.out.println("Membro não existe!");

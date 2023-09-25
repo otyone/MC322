@@ -12,8 +12,17 @@ public class MembroControllerImpl implements MembroController {
     public MembroControllerImpl() {
         membros = new ArrayList<>();
     }
+    
 
-    @Override
+    public List<MembroM> getMembros() {
+		return membros;
+	}
+
+	public void setMembros(List<MembroM> membros) {
+		this.membros = membros;
+	}
+
+	@Override
     public List<MembroM> listarMembros() {
         return membros;
     }

@@ -12,9 +12,9 @@ public class CDAudio extends Item {
 		Lista = Duracao = Estado = "Empty";
 		NumTot = NumDisp = 0;
 	}
-	public CDAudio(String titulo, String autorartista, String editoragravadora, String genero, String sinopse,
+	public CDAudio(String titulo, String autorartista, String detalhes, String editoragravadora, String genero, String sinopse,
 			String imgpath, int anopub, List<Comentario> comentarios, String lista, String duracao, String estado, int numTot, int numDisp) {
-		super(titulo, autorartista, editoragravadora, genero, sinopse, imgpath, anopub, estado, comentarios);
+		super(titulo, autorartista, detalhes, editoragravadora, genero, sinopse, imgpath, anopub, comentarios);
 		Lista = lista;
 		Duracao = duracao;
 		Estado = estado;

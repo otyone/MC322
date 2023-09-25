@@ -12,9 +12,9 @@ public class LivroEletrônico extends Item {
 		Formato = FormatoArq = URL = Requisitos = "Empty";
 		NumLic = Data = 0;
 	}
-	public LivroEletrônico(String titulo, String autorartista, String editoragravadora, String genero, String sinopse,
+	public LivroEletrônico(String titulo, String autorartista, String detalhes, String editoragravadora, String genero, String sinopse,
 			String imgpath, int anopub, List<Comentario> comentarios, String formato, String formatoArq, String uRL, String requisitos, int numLic, int data) {
-		super(titulo, autorartista, editoragravadora, genero, sinopse, imgpath, anopub, requisitos, comentarios);
+		super(titulo, autorartista, detalhes, editoragravadora, genero, sinopse, imgpath, anopub, comentarios);
 		Formato = formato;
 		FormatoArq = formatoArq;
 		URL = uRL;

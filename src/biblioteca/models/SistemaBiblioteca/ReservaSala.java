@@ -7,7 +7,7 @@ public class ReservaSala {
 		this.horaInicio = horaInicio;
 		this.horaFim = horaFim;
 	}
-	static class SalaIndividual{
+	public  class SalaIndividual{
 		private int numero;
 		boolean disponivel;
 		public SalaIndividual(int numero, boolean disponivel) {
@@ -28,7 +28,7 @@ public class ReservaSala {
 		}
 		
 	}
-	static class SalaGrupo{
+	public class SalaGrupo{
 		private int capacidade;
 		boolean equipamento;
 		public SalaGrupo(int capacidade, boolean equipamento) {
@@ -49,7 +49,7 @@ public class ReservaSala {
 		}
 		
 	}
-	static class SalaSilenciosa{
+	public class SalaSilenciosa{
 		private int assentos;
 		boolean cabines;
 		public SalaSilenciosa(int assentos, boolean cabines) {
@@ -70,7 +70,7 @@ public class ReservaSala {
 		}
 		
 	}
-	static class SalaMultimidia{
+	public class SalaMultimidia{
 		private EquipamentosMultimidia Equips;
 		public SalaMultimidia(EquipamentosMultimidia equips) {
 			Equips = equips;

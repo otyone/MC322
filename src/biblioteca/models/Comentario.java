@@ -1,23 +1,23 @@
 package biblioteca.models;
 
 public class Comentario {
-	private int membroId, itemId;
+	private String membroId, itemId;
 	private String Texto;
-	public Comentario(int membroId, int itemId, String texto) {
+	public Comentario(String membroId, String itemId, String texto) {
 		this.membroId = membroId;
 		this.itemId = itemId;
 		Texto = texto;
 	}
-	public int getMembroId() {
+	public String getMembroId() {
 		return membroId;
 	}
-	public void setMembroId(int membroId) {
+	public void setMembroId(String membroId) {
 		this.membroId = membroId;
 	}
-	public int getItemId() {
+	public String getItemId() {
 		return itemId;
 	}
-	public void setItemId(int itemId) {
+	public void setItemId(String itemId) {
 		this.itemId = itemId;
 	}
 	public String getTexto() {

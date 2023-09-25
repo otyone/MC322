@@ -15,8 +15,7 @@ public class Item implements ItemMultimidia, ComentarioController{ //criando a s
 		AnoPub = 0;
 		comentarios = null;
 	}
-	public Item(String titulo, String autorArtista, String detalhes, String editoraGravadora, String genero,
-			String sinopse, int anoPub, String imgPath, List<Comentario> comentarios) { //construtor específico
+	public Item(String titulo, String autorArtista, String detalhes, String editoraGravadora, String genero, String sinopse, String imgPath, int anoPub, List<Comentario> comentarios) { //construtor específico
 		Titulo = titulo;
 		AutorArtista = autorArtista;
 		Detalhes = detalhes;

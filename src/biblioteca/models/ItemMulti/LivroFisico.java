@@ -12,9 +12,9 @@ public class LivroFisico extends Item {
 		Localização = Estado = "Empty";
 		ISBN = Edição = NumTot = NumEd = 0;
 	}
-	public LivroFisico(String titulo, String autorartista, String editoragravadora, String genero, String sinopse,
+	public LivroFisico(String titulo, String autorartista, String detalhes, String editoragravadora, String genero, String sinopse,
 			String imgpath, int anopub, List<Comentario> comentarios, String localização, String estado, int iSBN, int edição, int numTot, int numEd) {
-		super(titulo, autorartista, editoragravadora, genero, sinopse, imgpath, anopub, estado, comentarios);
+		super(titulo, autorartista, detalhes, editoragravadora, genero, sinopse, imgpath, anopub, comentarios);
 		Localização = localização;
 		Estado = estado;
 		ISBN = iSBN;

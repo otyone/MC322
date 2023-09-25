@@ -27,6 +27,7 @@ public class BibliotecaViewImpl implements BibliotecaView {
         // Implementação da exibição de itens disponíveis
 		if(itens == null) {
 			System.out.println("Não há itens disponíveis");
+			System.out.println();
 			return;
 		}
     	Iterator<Item> it = itens.iterator();

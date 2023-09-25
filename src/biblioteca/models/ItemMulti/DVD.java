@@ -12,9 +12,9 @@ public class DVD extends Item {
 		Elenco = Duracao = LegendaAudio = Estado = "Empty";
 		NumTot = NumDisp = 0;
 	}
-	public DVD(String titulo, String autorartista, String editoragravadora, String genero, String sinopse,
+	public DVD(String titulo, String autorartista, String detalhes, String editoragravadora, String genero, String sinopse,
 			String imgpath, int anopub, List<Comentario> comentarios, String elenco, String duracao, String legendaAudio, String estado, int numTot, int numDisp) {
-		super(titulo, autorartista, editoragravadora, genero, sinopse, imgpath, anopub, estado, comentarios);
+		super(titulo, autorartista, detalhes, editoragravadora, genero, sinopse, imgpath, anopub, comentarios);
 		Elenco = elenco;
 		Duracao = duracao;
 		LegendaAudio = legendaAudio;
