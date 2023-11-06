@@ -596,238 +596,250 @@
       <operations public="true" package="true" protected="true" private="true" static="true"/>    
     </display>  
   </class>  
-  <association id="67">    
+  <interface id="67" language="java" name="biblioteca.models.CReflectionList" project="test" 
+    file="/test/src/biblioteca/models/CReflectionList.java" binary="false" corner="BOTTOM_RIGHT">    
+    <position height="-1" width="-1" x="534" y="1620"/>    
+    <display autosize="true" stereotype="true" package="true" initial-value="false" signature="true" 
+      sort-features="false" accessors="true" visibility="true">      
+      <attributes public="true" package="true" protected="true" private="true" static="true"/>      
+      <operations public="true" package="true" protected="true" private="true" static="true"/>    
+    </display>  
+  </interface>  
+  <class id="68" language="java" name="biblioteca.models.CReflection" project="test" 
+    file="/test/src/biblioteca/models/CReflection.java" binary="false" corner="BOTTOM_RIGHT">    
+    <position height="-1" width="-1" x="712" y="1777"/>    
+    <display autosize="true" stereotype="true" package="true" initial-value="false" signature="true" 
+      sort-features="false" accessors="true" visibility="true">      
+      <attributes public="true" package="true" protected="true" private="true" static="true"/>      
+      <operations public="true" package="true" protected="true" private="true" static="true"/>    
+    </display>  
+  </class>  
+  <association id="69">    
     <end type="SOURCE" refId="16" navigable="false">      
-      <attribute id="68" name="membros">        
+      <attribute id="70" name="membros">        
         <position height="0" width="0" x="0" y="0"/>      
       </attribute>      
-      <multiplicity id="69" minimum="0" maximum="2147483647">        
+      <multiplicity id="71" minimum="0" maximum="2147483647">        
         <position height="0" width="0" x="0" y="0"/>      
       </multiplicity>    
     </end>    
     <end type="TARGET" refId="50" navigable="true"/>    
     <display labels="true" multiplicity="true"/>  
   </association>  
-  <nesting id="70">    
-    <end type="SOURCE" refId="20"/>    
-    <end type="TARGET" refId="22"/>  
-  </nesting>  
-  <generalization id="71">    
-    <end type="SOURCE" refId="47"/>    
-    <end type="TARGET" refId="36"/>  
-  </generalization>  
-  <generalization id="72">    
-    <end type="SOURCE" refId="36"/>    
-    <end type="TARGET" refId="39"/>  
-  </generalization>  
-  <nesting id="73">    
-    <end type="SOURCE" refId="13"/>    
-    <end type="TARGET" refId="21"/>  
-  </nesting>  
-  <nesting id="74">    
-    <end type="SOURCE" refId="11"/>    
-    <end type="TARGET" refId="23"/>  
-  </nesting>  
-  <realization id="75">    
-    <end type="SOURCE" refId="58"/>    
-    <end type="TARGET" refId="53"/>  
-  </realization>  
-  <generalization id="76">    
-    <end type="SOURCE" refId="34"/>    
-    <end type="TARGET" refId="32"/>  
-  </generalization>  
-  <association id="77">    
-    <end type="SOURCE" refId="64" navigable="false">      
-      <attribute id="78" name="ListaEmprestimos">        
-        <position height="18" width="94" x="2377" y="1349"/>      
+  <association id="72">    
+    <end type="SOURCE" refId="61" navigable="false">      
+      <attribute id="73" name="itensEmprestados">        
+        <position height="18" width="96" x="2369" y="1366"/>      
       </attribute>      
-      <multiplicity id="79" minimum="0" maximum="2147483647"/>    
+      <multiplicity id="74" minimum="0" maximum="2147483647">        
+        <position height="16" width="21" x="2544" y="1323"/>      
+      </multiplicity>    
     </end>    
     <end type="TARGET" refId="49" navigable="true"/>    
     <display labels="true" multiplicity="true"/>  
   </association>  
-  <realization id="80">    
-    <end type="SOURCE" refId="61"/>    
-    <end type="TARGET" refId="62"/>  
-  </realization>  
-  <generalization id="81">    
-    <end type="SOURCE" refId="46"/>    
-    <end type="TARGET" refId="36"/>  
+  <generalization id="75">    
+    <end type="SOURCE" refId="40"/>    
+    <end type="TARGET" refId="45"/>  
   </generalization>  
-  <nesting id="82">    
+  <association id="76">    
+    <end type="SOURCE" refId="16" navigable="false">      
+      <attribute id="77" name="Equips">        
+        <position height="0" width="0" x="0" y="0"/>      
+      </attribute>      
+      <multiplicity id="78" minimum="0" maximum="1">        
+        <position height="0" width="0" x="0" y="0"/>      
+      </multiplicity>    
+    </end>    
+    <end type="TARGET" refId="12" navigable="true"/>    
+    <display labels="true" multiplicity="true"/>  
+  </association>  
+  <realization id="79">    
+    <end type="SOURCE" refId="68"/>    
+    <end type="TARGET" refId="67"/>  
+  </realization>  
+  <nesting id="80">    
     <end type="SOURCE" refId="13"/>    
     <end type="TARGET" refId="16"/>  
   </nesting>  
-  <association id="83">    
-    <end type="SOURCE" refId="29" navigable="false">      
-      <attribute id="84" name="Comissões">        
+  <association id="81">    
+    <end type="SOURCE" refId="1" navigable="false">      
+      <attribute id="82" name="bibliotecaController">        
         <position height="0" width="0" x="0" y="0"/>      
       </attribute>      
-      <multiplicity id="85" minimum="0" maximum="2147483647">        
+      <multiplicity id="83" minimum="0" maximum="1">        
+        <position height="0" width="0" x="0" y="0"/>      
+      </multiplicity>    
+    </end>    
+    <end type="TARGET" refId="53" navigable="true"/>    
+    <display labels="true" multiplicity="true"/>  
+  </association>  
+  <association id="84">    
+    <end type="SOURCE" refId="1" navigable="false">      
+      <attribute id="85" name="relatorioController">        
+        <position height="0" width="0" x="0" y="0"/>      
+      </attribute>      
+      <multiplicity id="86" minimum="0" maximum="1">        
+        <position height="0" width="0" x="0" y="0"/>      
+      </multiplicity>    
+    </end>    
+    <end type="TARGET" refId="60" navigable="true"/>    
+    <display labels="true" multiplicity="true"/>  
+  </association>  
+  <association id="87">    
+    <end type="SOURCE" refId="29" navigable="false">      
+      <attribute id="88" name="Comissões">        
+        <position height="0" width="0" x="0" y="0"/>      
+      </attribute>      
+      <multiplicity id="89" minimum="0" maximum="2147483647">        
         <position height="0" width="0" x="0" y="0"/>      
       </multiplicity>    
     </end>    
     <end type="TARGET" refId="32" navigable="true"/>    
     <display labels="true" multiplicity="true"/>  
   </association>  
-  <generalization id="86">    
+  <generalization id="90">    
     <end type="SOURCE" refId="33"/>    
     <end type="TARGET" refId="32"/>  
   </generalization>  
-  <generalization id="87">    
-    <end type="SOURCE" refId="40"/>    
-    <end type="TARGET" refId="45"/>  
-  </generalization>  
-  <association id="88">    
-    <end type="SOURCE" refId="39" navigable="false">      
-      <attribute id="89" name="Empréstimos">        
-        <position height="0" width="0" x="0" y="0"/>      
+  <association id="91">    
+    <end type="SOURCE" refId="61" navigable="false">      
+      <attribute id="92" name="itensReservados">        
+        <position height="18" width="92" x="2376" y="1318"/>      
       </attribute>      
-      <multiplicity id="90" minimum="0" maximum="2147483647">        
-        <position height="0" width="0" x="0" y="0"/>      
+      <multiplicity id="93" minimum="0" maximum="2147483647">        
+        <position height="16" width="21" x="2496" y="1343"/>      
       </multiplicity>    
     </end>    
-    <end type="TARGET" refId="31" navigable="true"/>    
+    <end type="TARGET" refId="49" navigable="true"/>    
     <display labels="true" multiplicity="true"/>  
   </association>  
-  <realization id="91">    
+  <realization id="94">    
     <end type="SOURCE" refId="66"/>    
     <end type="TARGET" refId="65"/>  
   </realization>  
-  <generalization id="92">    
-    <end type="SOURCE" refId="44"/>    
+  <realization id="95">    
+    <end type="SOURCE" refId="4"/>    
+    <end type="TARGET" refId="3"/>  
+  </realization>  
+  <generalization id="96">    
+    <end type="SOURCE" refId="43"/>    
     <end type="TARGET" refId="45"/>  
   </generalization>  
-  <association id="93">    
-    <end type="SOURCE" refId="32" navigable="false">      
-      <attribute id="94" name="Pedinte">        
+  <realization id="97">    
+    <end type="SOURCE" refId="64"/>    
+    <end type="TARGET" refId="63"/>  
+  </realization>  
+  <nesting id="98">    
+    <end type="SOURCE" refId="13"/>    
+    <end type="TARGET" refId="8"/>  
+  </nesting>  
+  <nesting id="99">    
+    <end type="SOURCE" refId="25"/>    
+    <end type="TARGET" refId="24"/>  
+  </nesting>  
+  <realization id="100">    
+    <end type="SOURCE" refId="7"/>    
+    <end type="TARGET" refId="6"/>  
+  </realization>  
+  <generalization id="101">    
+    <end type="SOURCE" refId="46"/>    
+    <end type="TARGET" refId="36"/>  
+  </generalization>  
+  <generalization id="102">    
+    <end type="SOURCE" refId="35"/>    
+    <end type="TARGET" refId="32"/>  
+  </generalization>  
+  <nesting id="103">    
+    <end type="SOURCE" refId="13"/>    
+    <end type="TARGET" refId="21"/>  
+  </nesting>  
+  <realization id="104">    
+    <end type="SOURCE" refId="58"/>    
+    <end type="TARGET" refId="53"/>  
+  </realization>  
+  <association id="105">    
+    <end type="SOURCE" refId="7" navigable="false">      
+      <attribute id="106" name="relatorioController">        
         <position height="0" width="0" x="0" y="0"/>      
       </attribute>      
-      <multiplicity id="95" minimum="0" maximum="1">        
+      <multiplicity id="107" minimum="0" maximum="1">        
         <position height="0" width="0" x="0" y="0"/>      
       </multiplicity>    
     </end>    
-    <end type="TARGET" refId="39" navigable="true"/>    
+    <end type="TARGET" refId="60" navigable="true"/>    
     <display labels="true" multiplicity="true"/>  
   </association>  
-  <realization id="96">    
-    <end type="SOURCE" refId="2"/>    
-    <end type="TARGET" refId="5"/>  
-  </realization>  
-  <association id="97">    
-    <end type="SOURCE" refId="16" navigable="false">      
-      <attribute id="98" name="Equips">        
+  <association id="108">    
+    <end type="SOURCE" refId="9" navigable="false">      
+      <attribute id="109" name="audio">        
         <position height="0" width="0" x="0" y="0"/>      
       </attribute>      
-      <multiplicity id="99" minimum="0" maximum="1">        
+      <multiplicity id="110" minimum="0" maximum="1">        
+        <position height="0" width="0" x="0" y="0"/>      
+      </multiplicity>    
+    </end>    
+    <end type="TARGET" refId="40" navigable="true"/>    
+    <display labels="true" multiplicity="true"/>  
+  </association>  
+  <nesting id="111">    
+    <end type="SOURCE" refId="20"/>    
+    <end type="TARGET" refId="14"/>  
+  </nesting>  
+  <nesting id="112">    
+    <end type="SOURCE" refId="20"/>    
+    <end type="TARGET" refId="18"/>  
+  </nesting>  
+  <generalization id="113">    
+    <end type="SOURCE" refId="41"/>    
+    <end type="TARGET" refId="45"/>  
+  </generalization>  
+  <association id="114">    
+    <end type="SOURCE" refId="17" navigable="false">      
+      <attribute id="115" name="Equips">        
+        <position height="0" width="0" x="0" y="0"/>      
+      </attribute>      
+      <multiplicity id="116" minimum="0" maximum="1">        
         <position height="0" width="0" x="0" y="0"/>      
       </multiplicity>    
     </end>    
     <end type="TARGET" refId="12" navigable="true"/>    
     <display labels="true" multiplicity="true"/>  
   </association>  
-  <realization id="100">    
-    <end type="SOURCE" refId="7"/>    
-    <end type="TARGET" refId="6"/>  
-  </realization>  
-  <nesting id="101">    
-    <end type="SOURCE" refId="25"/>    
-    <end type="TARGET" refId="24"/>  
-  </nesting>  
-  <association id="102">    
-    <end type="SOURCE" refId="58" navigable="false">      
-      <attribute id="103" name="itens">        
+  <association id="117">    
+    <end type="SOURCE" refId="59" navigable="false">      
+      <attribute id="118" name="membros">        
         <position height="0" width="0" x="0" y="0"/>      
       </attribute>      
-      <multiplicity id="104" minimum="0" maximum="2147483647">        
+      <multiplicity id="119" minimum="0" maximum="2147483647">        
+        <position height="0" width="0" x="0" y="0"/>      
+      </multiplicity>    
+    </end>    
+    <end type="TARGET" refId="39" navigable="true"/>    
+    <display labels="true" multiplicity="true"/>  
+  </association>  
+  <realization id="120">    
+    <end type="SOURCE" refId="45"/>    
+    <end type="TARGET" refId="49"/>  
+  </realization>  
+  <association id="121">    
+    <end type="SOURCE" refId="32" navigable="false">      
+      <attribute id="122" name="Objeto">        
+        <position height="0" width="0" x="0" y="0"/>      
+      </attribute>      
+      <multiplicity id="123" minimum="0" maximum="1">        
         <position height="0" width="0" x="0" y="0"/>      
       </multiplicity>    
     </end>    
     <end type="TARGET" refId="45" navigable="true"/>    
     <display labels="true" multiplicity="true"/>  
   </association>  
-  <generalization id="105">    
-    <end type="SOURCE" refId="43"/>    
-    <end type="TARGET" refId="45"/>  
-  </generalization>  
-  <association id="106">    
-    <end type="SOURCE" refId="45" navigable="false">      
-      <attribute id="107" name="comentarios">        
-        <position height="0" width="0" x="0" y="0"/>      
-      </attribute>      
-      <multiplicity id="108" minimum="0" maximum="2147483647">        
-        <position height="0" width="0" x="0" y="0"/>      
-      </multiplicity>    
-    </end>    
-    <end type="TARGET" refId="52" navigable="true"/>    
-    <display labels="true" multiplicity="true"/>  
-  </association>  
-  <realization id="109">    
-    <end type="SOURCE" refId="45"/>    
-    <end type="TARGET" refId="49"/>  
-  </realization>  
-  <realization id="110">    
-    <end type="SOURCE" refId="64"/>    
-    <end type="TARGET" refId="63"/>  
-  </realization>  
-  <association id="111">    
-    <end type="SOURCE" refId="1" navigable="false">      
-      <attribute id="112" name="membroController">        
-        <position height="0" width="0" x="0" y="0"/>      
-      </attribute>      
-      <multiplicity id="113" minimum="0" maximum="1">        
-        <position height="0" width="0" x="0" y="0"/>      
-      </multiplicity>    
-    </end>    
-    <end type="TARGET" refId="56" navigable="true"/>    
-    <display labels="true" multiplicity="true"/>  
-  </association>  
-  <nesting id="114">    
-    <end type="SOURCE" refId="20"/>    
-    <end type="TARGET" refId="14"/>  
-  </nesting>  
-  <generalization id="115">    
-    <end type="SOURCE" refId="48"/>    
-    <end type="TARGET" refId="36"/>  
-  </generalization>  
-  <association id="116">    
-    <end type="SOURCE" refId="17" navigable="false">      
-      <attribute id="117" name="Equips">        
-        <position height="0" width="0" x="0" y="0"/>      
-      </attribute>      
-      <multiplicity id="118" minimum="0" maximum="1">        
-        <position height="0" width="0" x="0" y="0"/>      
-      </multiplicity>    
-    </end>    
-    <end type="TARGET" refId="12" navigable="true"/>    
-    <display labels="true" multiplicity="true"/>  
-  </association>  
-  <nesting id="119">    
-    <end type="SOURCE" refId="25"/>    
-    <end type="TARGET" refId="27"/>  
-  </nesting>  
-  <generalization id="120">    
-    <end type="SOURCE" refId="37"/>    
-    <end type="TARGET" refId="39"/>  
-  </generalization>  
-  <association id="121">    
-    <end type="SOURCE" refId="59" navigable="false">      
-      <attribute id="122" name="membros">        
-        <position height="0" width="0" x="0" y="0"/>      
-      </attribute>      
-      <multiplicity id="123" minimum="0" maximum="2147483647">        
-        <position height="0" width="0" x="0" y="0"/>      
-      </multiplicity>    
-    </end>    
-    <end type="TARGET" refId="39" navigable="true"/>    
-    <display labels="true" multiplicity="true"/>  
-  </association>  
   <association id="124">    
-    <end type="SOURCE" refId="32" navigable="false">      
-      <attribute id="125" name="Objeto">        
+    <end type="SOURCE" refId="58" navigable="false">      
+      <attribute id="125" name="itens">        
         <position height="0" width="0" x="0" y="0"/>      
       </attribute>      
-      <multiplicity id="126" minimum="0" maximum="1">        
+      <multiplicity id="126" minimum="0" maximum="2147483647">        
         <position height="0" width="0" x="0" y="0"/>      
       </multiplicity>    
     </end>    
@@ -835,244 +847,256 @@
     <display labels="true" multiplicity="true"/>  
   </association>  
   <generalization id="127">    
-    <end type="SOURCE" refId="35"/>    
-    <end type="TARGET" refId="32"/>  
-  </generalization>  
-  <generalization id="128">    
-    <end type="SOURCE" refId="42"/>    
-    <end type="TARGET" refId="45"/>  
-  </generalization>  
-  <association id="129">    
-    <end type="SOURCE" refId="61" navigable="false">      
-      <attribute id="130" name="itensEmprestados">        
-        <position height="18" width="96" x="2369" y="1366"/>      
-      </attribute>      
-      <multiplicity id="131" minimum="0" maximum="2147483647">        
-        <position height="16" width="21" x="2544" y="1323"/>      
-      </multiplicity>    
-    </end>    
-    <end type="TARGET" refId="49" navigable="true"/>    
-    <display labels="true" multiplicity="true"/>  
-  </association>  
-  <nesting id="132">    
-    <end type="SOURCE" refId="25"/>    
-    <end type="TARGET" refId="9"/>  
-  </nesting>  
-  <nesting id="133">    
-    <end type="SOURCE" refId="11"/>    
-    <end type="TARGET" refId="26"/>  
-  </nesting>  
-  <generalization id="134">    
-    <end type="SOURCE" refId="30"/>    
-    <end type="TARGET" refId="32"/>  
-  </generalization>  
-  <realization id="135">    
-    <end type="SOURCE" refId="39"/>    
-    <end type="TARGET" refId="50"/>  
-  </realization>  
-  <nesting id="136">    
-    <end type="SOURCE" refId="20"/>    
-    <end type="TARGET" refId="18"/>  
-  </nesting>  
-  <realization id="137">    
-    <end type="SOURCE" refId="59"/>    
-    <end type="TARGET" refId="56"/>  
-  </realization>  
-  <nesting id="138">    
-    <end type="SOURCE" refId="20"/>    
-    <end type="TARGET" refId="17"/>  
-  </nesting>  
-  <association id="139">    
-    <end type="SOURCE" refId="1" navigable="false">      
-      <attribute id="140" name="bibliotecaController">        
-        <position height="0" width="0" x="0" y="0"/>      
-      </attribute>      
-      <multiplicity id="141" minimum="0" maximum="1">        
-        <position height="0" width="0" x="0" y="0"/>      
-      </multiplicity>    
-    </end>    
-    <end type="TARGET" refId="53" navigable="true"/>    
-    <display labels="true" multiplicity="true"/>  
-  </association>  
-  <realization id="142">    
-    <end type="SOURCE" refId="4"/>    
-    <end type="TARGET" refId="3"/>  
-  </realization>  
-  <association id="143">    
-    <end type="SOURCE" refId="4" navigable="false">      
-      <attribute id="144" name="membroController">        
-        <position height="0" width="0" x="0" y="0"/>      
-      </attribute>      
-      <multiplicity id="145" minimum="0" maximum="1">        
-        <position height="0" width="0" x="0" y="0"/>      
-      </multiplicity>    
-    </end>    
-    <end type="TARGET" refId="56" navigable="true"/>    
-    <display labels="true" multiplicity="true"/>  
-  </association>  
-  <nesting id="146">    
-    <end type="SOURCE" refId="13"/>    
-    <end type="TARGET" refId="8"/>  
-  </nesting>  
-  <association id="147">    
-    <end type="SOURCE" refId="8" navigable="false">      
-      <attribute id="148" name="membros">        
-        <position height="0" width="0" x="0" y="0"/>      
-      </attribute>      
-      <multiplicity id="149" minimum="0" maximum="2147483647">        
-        <position height="0" width="0" x="0" y="0"/>      
-      </multiplicity>    
-    </end>    
-    <end type="TARGET" refId="50" navigable="true"/>    
-    <display labels="true" multiplicity="true"/>  
-  </association>  
-  <association id="150">    
-    <end type="SOURCE" refId="1" navigable="false">      
-      <attribute id="151" name="relatorioController">        
-        <position height="0" width="0" x="0" y="0"/>      
-      </attribute>      
-      <multiplicity id="152" minimum="0" maximum="1">        
-        <position height="0" width="0" x="0" y="0"/>      
-      </multiplicity>    
-    </end>    
-    <end type="TARGET" refId="60" navigable="true"/>    
-    <display labels="true" multiplicity="true"/>  
-  </association>  
-  <association id="153">    
-    <end type="SOURCE" refId="61" navigable="false">      
-      <attribute id="154" name="itensReservados">        
-        <position height="18" width="92" x="2376" y="1318"/>      
-      </attribute>      
-      <multiplicity id="155" minimum="0" maximum="2147483647">        
-        <position height="16" width="21" x="2496" y="1343"/>      
-      </multiplicity>    
-    </end>    
-    <end type="TARGET" refId="49" navigable="true"/>    
-    <display labels="true" multiplicity="true"/>  
-  </association>  
-  <association id="156">    
-    <end type="SOURCE" refId="21" navigable="false">      
-      <attribute id="157" name="membros">        
-        <position height="0" width="0" x="0" y="0"/>      
-      </attribute>      
-      <multiplicity id="158" minimum="0" maximum="2147483647">        
-        <position height="0" width="0" x="0" y="0"/>      
-      </multiplicity>    
-    </end>    
-    <end type="TARGET" refId="50" navigable="true"/>    
-    <display labels="true" multiplicity="true"/>  
-  </association>  
-  <association id="159">    
-    <end type="SOURCE" refId="2" navigable="false">      
-      <attribute id="160" name="bibliotecaController">        
-        <position height="0" width="0" x="0" y="0"/>      
-      </attribute>      
-      <multiplicity id="161" minimum="0" maximum="1">        
-        <position height="0" width="0" x="0" y="0"/>      
-      </multiplicity>    
-    </end>    
-    <end type="TARGET" refId="53" navigable="true"/>    
-    <display labels="true" multiplicity="true"/>  
-  </association>  
-  <association id="162">    
-    <end type="SOURCE" refId="9" navigable="false">      
-      <attribute id="163" name="audio">        
-        <position height="0" width="0" x="0" y="0"/>      
-      </attribute>      
-      <multiplicity id="164" minimum="0" maximum="1">        
-        <position height="0" width="0" x="0" y="0"/>      
-      </multiplicity>    
-    </end>    
-    <end type="TARGET" refId="40" navigable="true"/>    
-    <display labels="true" multiplicity="true"/>  
-  </association>  
-  <generalization id="165">    
-    <end type="SOURCE" refId="31"/>    
-    <end type="TARGET" refId="32"/>  
-  </generalization>  
-  <realization id="166">    
-    <end type="SOURCE" refId="55"/>    
-    <end type="TARGET" refId="60"/>  
-  </realization>  
-  <association id="167">    
-    <end type="SOURCE" refId="7" navigable="false">      
-      <attribute id="168" name="relatorioController">        
-        <position height="0" width="0" x="0" y="0"/>      
-      </attribute>      
-      <multiplicity id="169" minimum="0" maximum="1">        
-        <position height="0" width="0" x="0" y="0"/>      
-      </multiplicity>    
-    </end>    
-    <end type="TARGET" refId="60" navigable="true"/>    
-    <display labels="true" multiplicity="true"/>  
-  </association>  
-  <generalization id="170">    
     <end type="SOURCE" refId="38"/>    
     <end type="TARGET" refId="39"/>  
   </generalization>  
-  <association id="171">    
-    <end type="SOURCE" refId="29" navigable="false">      
-      <attribute id="172" name="Objetos">        
-        <position height="0" width="0" x="0" y="0"/>      
-      </attribute>      
-      <multiplicity id="173" minimum="0" maximum="2147483647">        
-        <position height="0" width="0" x="0" y="0"/>      
-      </multiplicity>    
-    </end>    
-    <end type="TARGET" refId="45" navigable="true"/>    
-    <display labels="true" multiplicity="true"/>  
-  </association>  
-  <association id="174">    
-    <end type="SOURCE" refId="27" navigable="false">      
-      <attribute id="175" name="video">        
-        <position height="0" width="0" x="0" y="0"/>      
-      </attribute>      
-      <multiplicity id="176" minimum="0" maximum="1">        
-        <position height="0" width="0" x="0" y="0"/>      
-      </multiplicity>    
-    </end>    
-    <end type="TARGET" refId="44" navigable="true"/>    
-    <display labels="true" multiplicity="true"/>  
-  </association>  
-  <generalization id="177">    
-    <end type="SOURCE" refId="41"/>    
-    <end type="TARGET" refId="45"/>  
+  <generalization id="128">    
+    <end type="SOURCE" refId="34"/>    
+    <end type="TARGET" refId="32"/>  
   </generalization>  
-  <nesting id="178">    
-    <end type="SOURCE" refId="11"/>    
-    <end type="TARGET" refId="19"/>  
+  <realization id="129">    
+    <end type="SOURCE" refId="39"/>    
+    <end type="TARGET" refId="54"/>  
+  </realization>  
+  <nesting id="130">    
+    <end type="SOURCE" refId="25"/>    
+    <end type="TARGET" refId="27"/>  
   </nesting>  
-  <association id="179">    
-    <end type="SOURCE" refId="29" navigable="false">      
-      <attribute id="180" name="Pessoas">        
-        <position height="0" width="0" x="0" y="0"/>      
-      </attribute>      
-      <multiplicity id="181" minimum="0" maximum="2147483647">        
-        <position height="0" width="0" x="0" y="0"/>      
-      </multiplicity>    
-    </end>    
-    <end type="TARGET" refId="39" navigable="true"/>    
-    <display labels="true" multiplicity="true"/>  
-  </association>  
-  <association id="182">    
+  <generalization id="131">    
+    <end type="SOURCE" refId="47"/>    
+    <end type="TARGET" refId="36"/>  
+  </generalization>  
+  <realization id="132">    
+    <end type="SOURCE" refId="55"/>    
+    <end type="TARGET" refId="60"/>  
+  </realization>  
+  <generalization id="133">    
+    <end type="SOURCE" refId="31"/>    
+    <end type="TARGET" refId="32"/>  
+  </generalization>  
+  <association id="134">    
     <end type="SOURCE" refId="24" navigable="false">      
-      <attribute id="183" name="software">        
+      <attribute id="135" name="software">        
         <position height="0" width="0" x="0" y="0"/>      
       </attribute>      
-      <multiplicity id="184" minimum="0" maximum="1">        
+      <multiplicity id="136" minimum="0" maximum="1">        
         <position height="0" width="0" x="0" y="0"/>      
       </multiplicity>    
     </end>    
     <end type="TARGET" refId="43" navigable="true"/>    
     <display labels="true" multiplicity="true"/>  
   </association>  
-  <realization id="185">    
-    <end type="SOURCE" refId="39"/>    
-    <end type="TARGET" refId="54"/>  
+  <realization id="137">    
+    <end type="SOURCE" refId="61"/>    
+    <end type="TARGET" refId="62"/>  
   </realization>  
-  <realization id="186">    
+  <nesting id="138">    
+    <end type="SOURCE" refId="25"/>    
+    <end type="TARGET" refId="9"/>  
+  </nesting>  
+  <generalization id="139">    
+    <end type="SOURCE" refId="48"/>    
+    <end type="TARGET" refId="36"/>  
+  </generalization>  
+  <generalization id="140">    
+    <end type="SOURCE" refId="36"/>    
+    <end type="TARGET" refId="39"/>  
+  </generalization>  
+  <association id="141">    
+    <end type="SOURCE" refId="2" navigable="false">      
+      <attribute id="142" name="bibliotecaController">        
+        <position height="0" width="0" x="0" y="0"/>      
+      </attribute>      
+      <multiplicity id="143" minimum="0" maximum="1">        
+        <position height="0" width="0" x="0" y="0"/>      
+      </multiplicity>    
+    </end>    
+    <end type="TARGET" refId="53" navigable="true"/>    
+    <display labels="true" multiplicity="true"/>  
+  </association>  
+  <association id="144">    
+    <end type="SOURCE" refId="64" navigable="false">      
+      <attribute id="145" name="ListaEmprestimos">        
+        <position height="18" width="94" x="2377" y="1349"/>      
+      </attribute>      
+      <multiplicity id="146" minimum="0" maximum="2147483647">        
+        <position height="0" width="0" x="0" y="0"/>      
+      </multiplicity>    
+    </end>    
+    <end type="TARGET" refId="49" navigable="true"/>    
+    <display labels="true" multiplicity="true"/>  
+  </association>  
+  <nesting id="147">    
+    <end type="SOURCE" refId="20"/>    
+    <end type="TARGET" refId="17"/>  
+  </nesting>  
+  <realization id="148">    
     <end type="SOURCE" refId="45"/>    
     <end type="TARGET" refId="57"/>  
+  </realization>  
+  <nesting id="149">    
+    <end type="SOURCE" refId="20"/>    
+    <end type="TARGET" refId="22"/>  
+  </nesting>  
+  <association id="150">    
+    <end type="SOURCE" refId="8" navigable="false">      
+      <attribute id="151" name="membros">        
+        <position height="0" width="0" x="0" y="0"/>      
+      </attribute>      
+      <multiplicity id="152" minimum="0" maximum="2147483647">        
+        <position height="0" width="0" x="0" y="0"/>      
+      </multiplicity>    
+    </end>    
+    <end type="TARGET" refId="50" navigable="true"/>    
+    <display labels="true" multiplicity="true"/>  
+  </association>  
+  <association id="153">    
+    <end type="SOURCE" refId="4" navigable="false">      
+      <attribute id="154" name="membroController">        
+        <position height="0" width="0" x="0" y="0"/>      
+      </attribute>      
+      <multiplicity id="155" minimum="0" maximum="1">        
+        <position height="0" width="0" x="0" y="0"/>      
+      </multiplicity>    
+    </end>    
+    <end type="TARGET" refId="56" navigable="true"/>    
+    <display labels="true" multiplicity="true"/>  
+  </association>  
+  <generalization id="156">    
+    <end type="SOURCE" refId="30"/>    
+    <end type="TARGET" refId="32"/>  
+  </generalization>  
+  <generalization id="157">    
+    <end type="SOURCE" refId="42"/>    
+    <end type="TARGET" refId="45"/>  
+  </generalization>  
+  <association id="158">    
+    <end type="SOURCE" refId="27" navigable="false">      
+      <attribute id="159" name="video">        
+        <position height="0" width="0" x="0" y="0"/>      
+      </attribute>      
+      <multiplicity id="160" minimum="0" maximum="1">        
+        <position height="0" width="0" x="0" y="0"/>      
+      </multiplicity>    
+    </end>    
+    <end type="TARGET" refId="44" navigable="true"/>    
+    <display labels="true" multiplicity="true"/>  
+  </association>  
+  <realization id="161">    
+    <end type="SOURCE" refId="59"/>    
+    <end type="TARGET" refId="56"/>  
+  </realization>  
+  <nesting id="162">    
+    <end type="SOURCE" refId="11"/>    
+    <end type="TARGET" refId="26"/>  
+  </nesting>  
+  <generalization id="163">    
+    <end type="SOURCE" refId="37"/>    
+    <end type="TARGET" refId="39"/>  
+  </generalization>  
+  <association id="164">    
+    <end type="SOURCE" refId="32" navigable="false">      
+      <attribute id="165" name="Pedinte">        
+        <position height="0" width="0" x="0" y="0"/>      
+      </attribute>      
+      <multiplicity id="166" minimum="0" maximum="1">        
+        <position height="0" width="0" x="0" y="0"/>      
+      </multiplicity>    
+    </end>    
+    <end type="TARGET" refId="39" navigable="true"/>    
+    <display labels="true" multiplicity="true"/>  
+  </association>  
+  <nesting id="167">    
+    <end type="SOURCE" refId="11"/>    
+    <end type="TARGET" refId="23"/>  
+  </nesting>  
+  <generalization id="168">    
+    <end type="SOURCE" refId="44"/>    
+    <end type="TARGET" refId="45"/>  
+  </generalization>  
+  <association id="169">    
+    <end type="SOURCE" refId="45" navigable="false">      
+      <attribute id="170" name="comentarios">        
+        <position height="0" width="0" x="0" y="0"/>      
+      </attribute>      
+      <multiplicity id="171" minimum="0" maximum="2147483647">        
+        <position height="0" width="0" x="0" y="0"/>      
+      </multiplicity>    
+    </end>    
+    <end type="TARGET" refId="52" navigable="true"/>    
+    <display labels="true" multiplicity="true"/>  
+  </association>  
+  <association id="172">    
+    <end type="SOURCE" refId="1" navigable="false">      
+      <attribute id="173" name="membroController">        
+        <position height="0" width="0" x="0" y="0"/>      
+      </attribute>      
+      <multiplicity id="174" minimum="0" maximum="1">        
+        <position height="0" width="0" x="0" y="0"/>      
+      </multiplicity>    
+    </end>    
+    <end type="TARGET" refId="56" navigable="true"/>    
+    <display labels="true" multiplicity="true"/>  
+  </association>  
+  <association id="175">    
+    <end type="SOURCE" refId="21" navigable="false">      
+      <attribute id="176" name="membros">        
+        <position height="0" width="0" x="0" y="0"/>      
+      </attribute>      
+      <multiplicity id="177" minimum="0" maximum="2147483647">        
+        <position height="0" width="0" x="0" y="0"/>      
+      </multiplicity>    
+    </end>    
+    <end type="TARGET" refId="50" navigable="true"/>    
+    <display labels="true" multiplicity="true"/>  
+  </association>  
+  <association id="178">    
+    <end type="SOURCE" refId="39" navigable="false">      
+      <attribute id="179" name="Empréstimos">        
+        <position height="0" width="0" x="0" y="0"/>      
+      </attribute>      
+      <multiplicity id="180" minimum="0" maximum="2147483647">        
+        <position height="0" width="0" x="0" y="0"/>      
+      </multiplicity>    
+    </end>    
+    <end type="TARGET" refId="31" navigable="true"/>    
+    <display labels="true" multiplicity="true"/>  
+  </association>  
+  <association id="181">    
+    <end type="SOURCE" refId="29" navigable="false">      
+      <attribute id="182" name="Objetos">        
+        <position height="0" width="0" x="0" y="0"/>      
+      </attribute>      
+      <multiplicity id="183" minimum="0" maximum="2147483647">        
+        <position height="0" width="0" x="0" y="0"/>      
+      </multiplicity>    
+    </end>    
+    <end type="TARGET" refId="45" navigable="true"/>    
+    <display labels="true" multiplicity="true"/>  
+  </association>  
+  <realization id="184">    
+    <end type="SOURCE" refId="2"/>    
+    <end type="TARGET" refId="5"/>  
+  </realization>  
+  <association id="185">    
+    <end type="SOURCE" refId="29" navigable="false">      
+      <attribute id="186" name="Pessoas">        
+        <position height="0" width="0" x="0" y="0"/>      
+      </attribute>      
+      <multiplicity id="187" minimum="0" maximum="2147483647">        
+        <position height="0" width="0" x="0" y="0"/>      
+      </multiplicity>    
+    </end>    
+    <end type="TARGET" refId="39" navigable="true"/>    
+    <display labels="true" multiplicity="true"/>  
+  </association>  
+  <nesting id="188">    
+    <end type="SOURCE" refId="11"/>    
+    <end type="TARGET" refId="19"/>  
+  </nesting>  
+  <realization id="189">    
+    <end type="SOURCE" refId="39"/>    
+    <end type="TARGET" refId="50"/>  
   </realization>  
   <classifier-display autosize="true" stereotype="true" package="true" initial-value="false" signature="true" 
     sort-features="false" accessors="true" visibility="true">    

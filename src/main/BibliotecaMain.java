@@ -7,6 +7,7 @@ import biblioteca.models.Membros.*;
 import biblioteca.models.Pedidos.*;
 import biblioteca.models.ItemMulti.*;
 import Generics.*;
+import TypesExceptions.*;
 import biblioteca.models.SistemaBiblioteca.*;
 
 import java.util.List;
@@ -37,7 +38,6 @@ public class BibliotecaMain {
         List<MembroM> membros = membroController.listarMembros(); //lista de membros
         List<Item> itens = bibliotecaController.consultarItensDisponiveis(); //lista de itens disponíveis (não emprestados/reservados)
         Map<String, Item> itensTotal = new HashMap<>(); //map de itens totais
-        itens = null; membros = null; itensTotal = null; //inicializando com null (garantir bom funcionamento)
         
         Set<Categoria> Categorias = new HashSet<>();//Set de Categorias
         Categoria Artes = new Categoria("Artes"); Categoria Tecnologia = new Categoria("Tecnologia"); //criando Categorias-Exemplo
@@ -45,7 +45,7 @@ public class BibliotecaMain {
         
         Set<Empréstimo> Empréstimos = new HashSet<>(); //set de Empréstimos
         List<Reserva> Reservas = new LinkedList<>(); //lista de reservas de itens
-        Empréstimos = null; Reservas = null; //inicializando com null (garantir bom funcionamento)
+        List<Multa> Multas = new LinkedList<>(); //lista de multas
         
         ///////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
         
@@ -63,7 +63,12 @@ public class BibliotecaMain {
         ListaE2.Emprestar(outro); ListaE2.Emprestar(dvd); ListaE2.mostrarEmpréstimos(); ListaE2.Remover(outro); ListaE2.mostrarEmpréstimos(); //testando métodos comprovando diferentes tipos de itens
         
         ///////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
-
+        CReflection<List<MembroM>> reflection = new CReflection<List<MembroM>>(); //instanciando uma reflection de tipo Lista Membro
+        MembroM membroteste = new MembroM(); Item itemteste = new Item(); //instanciando objetos teste de tipo Membro e Item
+        
+        reflection.imprimirAtributos(membroteste, itemteste); //imprimindo atributos 
+        reflection.imprimirMetodos(membroteste, itemteste); //imprimindo métodos
+        reflection.imprimirInfo(membros);// imprimir tamanho da lista através de invoke
         
         while (true) {
             System.out.println("---- Menu Biblioteca ----");
@@ -83,7 +88,7 @@ public class BibliotecaMain {
             switch (opcao) {
                 case 1:
                     // Menu de Gerenciamento de Itens
-                    menuGerenciamentoItens(scanner, bibliotecaView, Reservas, itens, itensTotal, Empréstimos, membros);
+                    menuGerenciamentoItens(scanner, bibliotecaView, Reservas, itens, itensTotal, Empréstimos, Multas, membros);
                     break;
                 case 2:
                     // Menu de Gerenciamento de Membros
@@ -108,7 +113,7 @@ public class BibliotecaMain {
         }
     }
 
-    private static void menuGerenciamentoItens(Scanner scanner, BibliotecaView bibliotecaView, List<Reserva> Reservas, List<Item> itens, Map<String, Item> itensTotal, Set<Empréstimo> Empréstimos, List<MembroM> membros) {
+    private static void menuGerenciamentoItens(Scanner scanner, BibliotecaView bibliotecaView, List<Reserva> Reservas, List<Item> itens, Map<String, Item> itensTotal, Set<Empréstimo> Empréstimos, List<Multa> Multas, List<MembroM> membros) {
         while (true) {
             System.out.println("---- Menu Gerenciamento de Itens ----");
             System.out.println();
@@ -141,7 +146,22 @@ public class BibliotecaMain {
                     removerItem(scanner, itens, itensTotal);
                     break;
                 case 5:
-                    realizarEmprestimo(scanner, itens, itensTotal, membros, Empréstimos, Reservas);
+                	try {
+                    realizarEmprestimo(scanner, itens, itensTotal, membros, Empréstimos, Reservas, Multas);
+                	} catch(ExcecaoLimiteEmprestimo e) {
+                		System.err.println("Erro ao realizar empréstimo: " + e.getMessage());
+                		System.out.println();
+                	} catch(ExcecaoMultaPendente m) {
+                		System.err.println("Erro ao realizar empréstimo: " + m.getMessage());
+                		System.out.println();
+                	} catch(ExcecaoItemND i) {
+                		System.err.println("Erro ao realizar empréstimo: " + i.getMessage());
+                		System.out.println();
+                	}
+                	finally {
+                		System.out.println("Por favor, realize novamente o empréstimo:");
+                		System.out.println();
+                	}
                     break;
                 case 6:
                     realizarRenovacao(scanner);
@@ -150,7 +170,19 @@ public class BibliotecaMain {
                 	fazerReservaPadrão(scanner, itens, itensTotal, membros, Reservas);
                     break;
                 case 8:
-                    devolverItem(scanner, Empréstimos, itens);
+				try {
+					devolverItem(scanner, Empréstimos, itens);
+				} catch (ExcecaoItemNEmp e) {
+					System.err.println("Erro ao devolver: " + e.getMessage());
+            		System.out.println();
+				} catch (ExcecaoItemDanificado e) {
+					System.err.println("Erro ao devolver: " + e.getMessage());
+            		System.out.println();
+				}
+				finally {
+            		System.out.println("Por favor, realize novamente a devolução");
+            		System.out.println();
+            	}
                     break;
                 case 9:
                     return;
@@ -296,7 +328,7 @@ public class BibliotecaMain {
         // Lógica para administração de gerentes
     }
     
-    private static void devolverItem(Scanner scanner, Set<Empréstimo> Empréstimos, List<Item> itens) {
+    private static void devolverItem(Scanner scanner, Set<Empréstimo> Empréstimos, List<Item> itens) throws ExcecaoItemNEmp, ExcecaoItemDanificado{
         System.out.println("Qual Item deseja devolver? (Digite o Nome)"); //descobrir item
         System.out.println();
     	String Titulo = scanner.nextLine();
@@ -432,7 +464,7 @@ public class BibliotecaMain {
     }
 
     // Métodos para realizar empréstimo
-    private static void realizarEmprestimo(Scanner scanner, List<Item> itens, Map<String, Item> itensTotal, List<MembroM> membros, Set<Empréstimo> empréstimos, List<Reserva> reservas) {
+    private static void realizarEmprestimo(Scanner scanner, List<Item> itens, Map<String, Item> itensTotal, List<MembroM> membros, Set<Empréstimo> empréstimos, List<Reserva> reservas, List<Multa> Multas) throws ExcecaoLimiteEmprestimo, ExcecaoItemND, ExcecaoMultaPendente{
         // Lógica para realizar um empréstimo
         System.out.println("Operação de Empréstimo de Itens");
         System.out.println();
@@ -452,6 +484,8 @@ public class BibliotecaMain {
     	boolean check = checkReserva(Titulo, Mtest, Itest, itensTotal, reservas); //verificar se está reservado
     	if(check == false) { //já está reservado 
     		return;
+    	}if(itens.contains(Itest) != true) {
+    		throw new ExcecaoItemND("Item não está disponível!");
     	}
     	Empréstimo emprestimo = new Empréstimo(Itest, Mtest);
     	if(empréstimos.contains(emprestimo)) { //verificar se já está emprestado
@@ -463,6 +497,7 @@ public class BibliotecaMain {
     	bibliotecaController.emprestarItem(Mtest, Itest); //adicionar no histórico de empréstimos do membro
     	return;
     }
+    
 
     private static void realizarRenovacao(Scanner scanner) {
         // Lógica para realizar uma renovação de empréstimo
