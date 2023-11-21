@@ -9,6 +9,7 @@ import biblioteca.models.ItemMulti.*;
 import Generics.*;
 import Factory.*;
 import SRP.*;
+import OCP.*;
 import ObserverDesign.*;
 import TypesExceptions.*;
 import biblioteca.models.SistemaBiblioteca.*;
@@ -129,7 +130,17 @@ public class BibliotecaMain {
         		+ "");
         
         ///////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
-
+        System.out.println("Teste para segundo princípio SOLID - Open Closed Principle: ");
+        
+        Relatório relatório = new Relatório(); //instanciando classe apropriada
+        relatório.setNome("Relatório de Item"); relatório.setCodigo(251);
+        relatório.display(itemteste.getTitulo(), itemteste.getAutorArtista(), itemteste.getDetalhes()); //imprimindo outras informações pertinentes sem alterar interface original
+        
+        System.out.println("        ///////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////\n"
+        		+ "");
+        
+        ///////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
+        
         while (true) {
             System.out.println("---- Menu Biblioteca ----");
             System.out.println();
