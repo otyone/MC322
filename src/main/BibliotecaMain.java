@@ -7,6 +7,8 @@ import biblioteca.models.Membros.*;
 import biblioteca.models.Pedidos.*;
 import biblioteca.models.ItemMulti.*;
 import Generics.*;
+import Factory.*;
+import ObserverDesign.*;
 import TypesExceptions.*;
 import biblioteca.models.SistemaBiblioteca.*;
 
@@ -48,6 +50,7 @@ public class BibliotecaMain {
         List<Multa> Multas = new LinkedList<>(); //lista de multas
         
         ///////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
+        System.out.println("Teste para classes genéricas: ");
         
         DVD dvd = new DVD();  Outros outro = new Outros(); ReservaSala Sala1 = new ReservaSala(2509, 11, 14); ReservaSala.SalaIndividual SalaI = Sala1.new SalaIndividual(10,true); //instanciando objetos para testar as classes genéricas
         
@@ -58,17 +61,62 @@ public class BibliotecaMain {
         ListaR.Reservar(SalaI); ListaR.Reservar(SalaI); ListaR.mostrarReservas(); ListaR.Remover(SalaI); ListaR.mostrarReservas(); //testando métodos
         ListaR2.Reservar(dvd); ListaR2.Reservar(outro); ListaR2.mostrarReservas(); ListaR2.Remover(dvd); ListaR2.mostrarReservas(); //testando métodos comprovando diferentes tipos de itens
         
-        ListaEmpréstimos<DVD> ListaE = new ListaEmpréstimosImpl<DVD>(); ListaEmpréstimos<ItemMultimidia> ListaE2 = new ListaEmpréstimosImpl<ItemMultimidia>(); //instanciando dois tipos de Lista Emrpéstimos
+        ListaEmpréstimos<DVD> ListaE = new ListaEmpréstimosImpl<DVD>(); ListaEmpréstimos<ItemMultimidia> ListaE2 = new ListaEmpréstimosImpl<ItemMultimidia>(); //instanciando dois tipos de Lista Empréstimos
         ListaE.Emprestar(dvd); ListaE.Emprestar(dvd); ListaE.mostrarEmpréstimos(); ListaE.Remover(dvd); ListaE.mostrarEmpréstimos(); //testando métodos
         ListaE2.Emprestar(outro); ListaE2.Emprestar(dvd); ListaE2.mostrarEmpréstimos(); ListaE2.Remover(outro); ListaE2.mostrarEmpréstimos(); //testando métodos comprovando diferentes tipos de itens
         
+        System.out.println("        ///////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////\n"
+        		+ "");
+        
         ///////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
+        System.out.println("Teste para reflexão: ");
+        
         CReflection<List<MembroM>> reflection = new CReflection<List<MembroM>>(); //instanciando uma reflection de tipo Lista Membro
         MembroM membroteste = new MembroM(); Item itemteste = new Item(); //instanciando objetos teste de tipo Membro e Item
         
         reflection.imprimirAtributos(membroteste, itemteste); //imprimindo atributos 
         reflection.imprimirMetodos(membroteste, itemteste); //imprimindo métodos
         reflection.imprimirInfo(membros);// imprimir tamanho da lista através de invoke
+        
+        System.out.println("        ///////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////\n"
+        		+ "");
+        
+        ///////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
+        System.out.println("Teste para padrão Singleton: ");
+        
+        CSingleton singleton1 = CSingleton.getInstance("chocolate"); //criando instancia de CSingleton
+        CSingleton singleton2 = CSingleton.getInstance("suco"); //"criando" instancia de Singleton novamente
+        System.out.println(singleton1.texto); //provando que apenas uma instancia é possivel
+        System.out.println(singleton2.texto);
+        System.out.println();
+        
+        System.out.println("        ///////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////\n"
+        		+ "");
+        
+        ///////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
+        System.out.println("Teste para padrão Observer: ");
+        
+        Subject observable = new Subject(); //instanciando observado
+        CObserver observer = new CObserver(); //instanciando observador
+        
+        observable.addOb(observer); //adicionando observado
+        observable.setNotificar(itemteste); //testando
+        System.out.println("Item notificado: " +observer.getNews().getTitulo());
+        System.out.println();
+        
+        System.out.println("        ///////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////\n"
+        		+ "");
+        
+        ///////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
+        System.out.println("Teste para padrão Factory: ");
+        
+        ItemMultimedia livro = ItemMultimedia.getItemMultimedia("Livro", "nome do livro"); //fabricar instância livro
+        ItemMultimedia musica = ItemMultimedia.getItemMultimedia("Musica", "nome da musica"); //fabricar instância musica
+        System.out.println("Items: " +livro.getTexto() +" ; " +musica.getTexto()); //test
+        System.out.println();
+        
+        System.out.println("        ///////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////\n"
+        		+ "");
         
         while (true) {
             System.out.println("---- Menu Biblioteca ----");
