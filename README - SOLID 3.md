@@ -1,0 +1,4 @@
+PRINCÍPIOS DE PADRÃO SOLID 3 - LSP (Liskov Substitution Principle)
+"se S é um subtipo de T, então objetos do tipo T em um programa podem ser substituídos por objetos do tipo S sem alterar nenhuma das propriedades desejáveis desse programa"
+Razão: qualquer utilização de subclasses deverá respeitar (e não utilizar total override) a superclasse, e portanto, deverá funcionar apropriadamente até que uma classe não subtipo tente ser utilizada
+Utilização: foram criadas as novas subclasses "Tela" e "Noticiador" (da superclasse "Dispositivo") e testado o funcionamento de ambas, comprovando que o programa continua sua funcionabilidade mesmo com outros subtipos

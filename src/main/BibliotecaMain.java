@@ -10,6 +10,7 @@ import Generics.*;
 import Factory.*;
 import SRP.*;
 import OCP.*;
+import LSP.*;
 import ObserverDesign.*;
 import TypesExceptions.*;
 import biblioteca.models.SistemaBiblioteca.*;
@@ -141,7 +142,19 @@ public class BibliotecaMain {
         		+ "");
         
         ///////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
+        System.out.println("Teste para terceiro princípio SOLID - Liskov Substitution Principle: ");
         
+        Dispositivo disp1 = new Tela(33); //instanciando classe
+        System.out.println("Tamanho: " +disp1.getTamanho() +"\n" + "Dispositivo e Função: " +disp1.getFuncao()); // testando
+        
+        Dispositivo disp2 = new Noticiador(45); //instanciando classe
+        System.out.println("Tamanho: " +disp2.getTamanho() +"\n" + "Dispositivo e Função: " +disp2.getFuncao()); // testando, comprovando a mesma funcionalidade
+        
+        System.out.println("        ///////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////\n"
+        		+ "");
+        
+        ///////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
+
         while (true) {
             System.out.println("---- Menu Biblioteca ----");
             System.out.println();
