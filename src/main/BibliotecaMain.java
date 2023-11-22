@@ -11,6 +11,7 @@ import Factory.*;
 import SRP.*;
 import OCP.*;
 import LSP.*;
+import ISP.*;
 import ObserverDesign.*;
 import TypesExceptions.*;
 import biblioteca.models.SistemaBiblioteca.*;
@@ -154,7 +155,20 @@ public class BibliotecaMain {
         		+ "");
         
         ///////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
-
+        System.out.println("Teste para quarto princípio SOLID - Liskov Substitution Principle: ");
+        
+        Noticiador noticiador = new Noticiador(12); //instanciando classe específica
+        noticiador.noticia("Hello World!"); //utilizando método específico
+        
+        System.out.println();
+        
+        relatório.display(itemteste.getTitulo(), itemteste.getAutorArtista(), itemteste.getDetalhes()); //utilizando outro método específico
+        
+        System.out.println("        ///////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////\n"
+        		+ "");
+        
+        ///////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
+        
         while (true) {
             System.out.println("---- Menu Biblioteca ----");
             System.out.println();
