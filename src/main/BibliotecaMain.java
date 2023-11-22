@@ -156,7 +156,7 @@ public class BibliotecaMain {
         		+ "");
         
         ///////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
-        System.out.println("Teste para quarto princípio SOLID - Liskov Substitution Principle: ");
+        System.out.println("Teste para quarto princípio SOLID - Interface segregation principle: ");
         
         Noticiador noticiador = new Noticiador(12); //instanciando classe específica
         noticiador.noticia("Hello World!"); //utilizando método específico
