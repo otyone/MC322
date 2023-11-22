@@ -12,6 +12,7 @@ import SRP.*;
 import OCP.*;
 import LSP.*;
 import ISP.*;
+import DIP.*;
 import ObserverDesign.*;
 import TypesExceptions.*;
 import biblioteca.models.SistemaBiblioteca.*;
@@ -168,7 +169,19 @@ public class BibliotecaMain {
         		+ "");
         
         ///////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
+        System.out.println("Teste para quinto princípio SOLID - Dependency Inversion Principle: ");
         
+        Principal principal = new Principal(disp2); //instanciando classe de nível alto
+        principal.Demo(); //testando
+        
+        principal.setDispositivo(disp1); //outro dispositivo se torna principal, comprovando que a classe de nível alto lida com a abstração, não com a classe específica
+        principal.Demo(); //testando
+        
+        System.out.println("        ///////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////\n"
+        		+ "");
+        
+        ///////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
+
         while (true) {
             System.out.println("---- Menu Biblioteca ----");
             System.out.println();
